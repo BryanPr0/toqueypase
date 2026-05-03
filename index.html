@@ -958,8 +958,8 @@ function loadTable(key){
   /* En Netlify usa el proxy function; en local (file://) llama directo */
   var isLocal=location.protocol==='file:';
   var url=isLocal
-    ?'https://api.football-data.org/v4/competitions/'+cfg.id+'/standings'
-    :'/.netlify/functions/standings?league='+key;
+  ?'https://api.football-data.org/v4/competitions/'+cfg.id+'/standings'
+  :'/api/standings?league='+key;
   var headers=isLocal?{'X-Auth-Token':FD_KEY}:{};
   fetch(url,{headers:headers})
   .then(function(r){
