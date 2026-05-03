@@ -1,40 +1,26 @@
-exports.handler = async function(event) {
-  const league = event.queryStringParameters && event.queryStringParameters.league;
-  const leagueMap = {
-    'll': 2014,  // LaLiga
-    'pl': 2021,  // Premier League
-    'bl': 2002,  // Bundesliga
-    'sa': 2019,  // Serie A
-    'l1': 2015   // Ligue 1
+export default async function handler(request, response) {
+  const { league } = request.query;
+  const FD_KEY = 'c1c9cfed0b354edca2ce6b220447352c'; // Tu llave del API
+
+  const leagues = {
+    'll': 2014, 'pl': 2021, 'bl': 2002, 'sa': 2019, 'l1': 2015
   };
 
-  const leagueId = leagueMap[league];
-  if (!leagueId) {
-    return { statusCode: 400, body: JSON.stringify({ error: 'Liga no válida' }) };
-  }
+  const competitionId = leagues[league] || 2014;
 
   try {
-    const response = await fetch(
-      `https://api.football-data.org/v4/competitions/${leagueId}/standings`,
-      { headers: { 'X-Auth-Token': process.env.FD_API_KEY } }
-    );
+    const res = await fetch(`https://api.football-data.org/v4/competitions/${competitionId}/standings`, {
+      headers: { 'X-Auth-Token': FD_KEY }
+    });
 
-    if (!response.ok) throw new Error(`HTTP ${response.status}`);
-    const data = await response.json();
+    if (!res.ok) throw new Error(`Error de API: ${res.status}`);
 
-    return {
-      statusCode: 200,
-      headers: {
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*',
-        'Cache-Control': 'public, max-age=300' // caché 5 min
-      },
-      body: JSON.stringify(data)
-    };
-  } catch (err) {
-    return {
-      statusCode: 500,
-      body: JSON.stringify({ error: err.message })
-    };
+    const data = await res.json();
+    
+    // Configurar cabeceras para evitar bloqueos
+    response.setHeader('Access-Control-Allow-Origin', '*');
+    response.status(200).json(data);
+  } catch (error) {
+    response.status(500).json({ error: error.message });
   }
-};
+}
