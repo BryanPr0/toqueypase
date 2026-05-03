@@ -881,13 +881,15 @@ footer{background:#0d0f14;border-top:1px solid var(--bdr);padding:18px 24px;text
 
 <script>
 /* ── Tablas de posiciones con API football-data.org (CORS abierto, gratis) ── */
-var FD_KEY='5374b49561354a1e956ad23bf0b33d92'; // token público de prueba
+var FD_KEY='c1c9cfed0b354edca2ce6b220447352c'; // token público de prueba
 var leagues={
   'll':{id:2014,name:'LaLiga',chZones:4,euZones:2,reZones:3},
   'pl':{id:2021,name:'Premier League',chZones:4,euZones:3,reZones:3},
   'bl':{id:2002,name:'Bundesliga',chZones:4,euZones:2,reZones:2},
   'sa':{id:2019,name:'Serie A',chZones:4,euZones:2,reZones:3},
   'l1':{id:2015,name:'Ligue 1',chZones:4,euZones:2,reZones:3}
+  'wc':{id:2000,name:'Mundial',chZones:0,euZones:0,reZones:0}
+  
 };
 var tblLoaded={};
 
@@ -978,6 +980,57 @@ function loadTable(key){
     '</div>';
   });
 }
+  /* ... después de la función loadTable(key) ... */
+
+// NUEVA FUNCIÓN PARA GOLEADORES REALES
+function loadScorers(leagueKey) {
+  const container = document.querySelector('.rnav .wgt [role="list"]');
+  if(!container) return;
+
+  container.innerHTML = '<div class="tbl-loading"><div class="tbl-spin"></div></div>';
+
+  fetch(`/api/scorers?league=${leagueKey}`)
+    .then(r => r.json())
+    .then(data => {
+      if (!data.scorers) throw new Error('No hay datos');
+      
+      container.innerHTML = data.scorers.slice(0, 5).map((s, i) => `
+        <div class="scrow" role="listitem">
+          <span class="scpos">${i+1}</span>
+          <div class="scinf">
+            <div class="scname">${s.player.name}</div>
+            <div class="scteam">${s.team.name}</div>
+          </div>
+          <span class="scg">${s.goals}</span>
+        </div>
+      `).join('');
+    })
+    .catch(err => {
+      container.innerHTML = '<div class="tbl-err">Error al cargar goleadores</div>';
+    });
+}
+
+// ACTUALIZAR FUNCIÓN swTab PARA QUE TAMBIÉN CARGUE GOLEADORES
+function swTab(pfx,id){
+  var allB=document.querySelectorAll('[id^="'+pfx+'t-"]');
+  var allP=document.querySelectorAll('[id^="'+pfx+'p-"]');
+  allB.forEach(function(b){b.classList.remove('on');b.setAttribute('aria-selected','false');b.tabIndex=-1;});
+  allP.forEach(function(p){p.classList.remove('on');});
+  
+  var btn=document.getElementById(pfx+'t-'+id);
+  var pan=document.getElementById(pfx+'p-'+id);
+  
+  if(btn){btn.classList.add('on');btn.setAttribute('aria-selected','true');btn.tabIndex=0;}
+  if(pan)pan.classList.add('on');
+
+  /* Modificación: Si cambias de liga en la tabla, también actualiza los goleadores del sidebar */
+  if(pfx==='t' && leagues[id]) {
+    loadTable(id);
+    loadScorers(id); // Llamada a la nueva función
+  }
+}
+
+
 
 /* Cargar LaLiga al inicio */
 window.addEventListener('DOMContentLoaded',function(){loadTable('ll');});
