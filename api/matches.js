@@ -1,5 +1,5 @@
 export default async function handler(request, response) {
-  const FD_KEY = '5374b49561354a1e956ad23bf0b33d92';
+  const FD_KEY = 'c1c9cfed0b354edca2ce6b220447352c';
   try {
     const res = await fetch('https://api.football-data.org/v4/matches', {
       headers: { 'X-Auth-Token': FD_KEY }
