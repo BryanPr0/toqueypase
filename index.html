@@ -1071,7 +1071,18 @@ function submitComment(){
 document.querySelectorAll('.mr,.fmatch,.ni').forEach(function(el){
   el.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();el.click();}});
 });
-  document.getElementById('current-date').textContent = new Date().toLocaleDateString('es-ES', { day: 'numeric', month: 'short', year: 'numeric' });
+  // Motor para inyectar la fecha actual en el span
+function mostrarFechaReal() {
+  const spanFecha = document.getElementById('current-date');
+  if (spanFecha) {
+    const opciones = { day: 'numeric', month: 'short', year: 'numeric' };
+    const fechaHoy = new Date().toLocaleDateString('es-ES', opciones);
+    spanFecha.textContent = fechaHoy;
+  }
+}
+
+// Se ejecuta apenas carga la página
+window.addEventListener('DOMContentLoaded', mostrarFechaReal);
 </script>
 </body>
 </html>
