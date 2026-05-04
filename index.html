@@ -325,7 +325,7 @@ footer{background:#0d0f14;border-top:1px solid var(--bdr);padding:18px 24px;text
 
 <!-- ═══ INICIO ═══ -->
 <div id="page-inicio" class="page on" aria-label="Inicio">
-  <div class="shdr"><h1 class="stitle">Partidos de hoy — 27 Abr 2026</h1><span class="slink" onclick="goTo('partidos')">Ver todos →</span></div>
+  <div class="shdr"><h1 class="stitle">Partidos de hoy — <span id="current-date"></span></h1></div>
 
   <!-- CHAMPIONS -->
   <div class="lb" aria-label="Champions League semifinales">
@@ -1071,6 +1071,7 @@ function submitComment(){
 document.querySelectorAll('.mr,.fmatch,.ni').forEach(function(el){
   el.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();el.click();}});
 });
+  document.getElementById('current-date').textContent = new Date().toLocaleDateString('es-ES', { day: 'numeric', month: 'short', year: 'numeric' });
 </script>
 </body>
 </html>
