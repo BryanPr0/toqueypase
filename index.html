@@ -14,9 +14,10 @@ a{color:inherit;text-decoration:none;}
 button{font-family:'Inter',sans-serif;cursor:pointer;}
 .skip{position:absolute;top:-60px;left:8px;background:var(--grn);color:#000;padding:8px 16px;font-weight:700;border-radius:6px;z-index:9999;transition:top .2s;}
 .skip:focus{top:8px;}
-/* TOPBAR */
+
+/* ── TOPBAR ── */
 .topbar{background:#0d0f14;border-bottom:1px solid var(--bdr);height:56px;display:flex;align-items:center;position:sticky;top:0;z-index:200;}
-.topbar-inner{max-width:1280px;margin:0 auto;width:100%;padding:0 20px;display:flex;align-items:center;gap:14px;}
+.topbar-inner{max-width:1280px;margin:0 auto;width:100%;padding:0 16px;display:flex;align-items:center;gap:12px;}
 .logo{display:flex;align-items:center;gap:10px;cursor:pointer;flex-shrink:0;}
 .logo-icon{width:38px;height:38px;background:var(--grn);border-radius:9px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
 .logo-ltr{font-size:14px;font-weight:800;color:#000;letter-spacing:-1px;line-height:1;}
@@ -27,9 +28,16 @@ button{font-family:'Inter',sans-serif;cursor:pointer;}
 .sbox:focus-within{border-color:var(--grn);}
 .sbox input{border:none;outline:none;background:transparent;color:var(--t1);font-size:13px;flex:1;font-family:'Inter',sans-serif;}
 .sbox input::placeholder{color:var(--t3);}
-/* LAYOUT */
+
+/* ── HAMBURGER BUTTON (móvil) ── */
+.menu-btn{display:none;background:none;border:none;color:var(--t1);padding:8px;border-radius:8px;cursor:pointer;flex-shrink:0;}
+.menu-btn:hover{background:var(--card);}
+.menu-btn svg{display:block;}
+
+/* ── LAYOUT ── */
 .layout{display:flex;max-width:1280px;margin:0 auto;min-height:calc(100vh - 56px);}
-/* LEFT NAV */
+
+/* ── LEFT NAV ── */
 .lnav{width:220px;flex-shrink:0;background:var(--sb);border-right:1px solid var(--bdr);padding:14px 0;position:sticky;top:56px;height:calc(100vh - 56px);overflow-y:auto;}
 .lnav::-webkit-scrollbar{width:3px;}
 .lnav::-webkit-scrollbar-thumb{background:var(--bdr);}
@@ -39,25 +47,45 @@ button{font-family:'Inter',sans-serif;cursor:pointer;}
 .ni.on{background:var(--grn-a);color:var(--grn);border-left-color:var(--grn);font-weight:600;}
 .ni:focus-visible{outline:2px solid var(--grn);outline-offset:-2px;}
 .ndiv{height:1px;background:var(--bdr);margin:8px 0;}
-/* LEAGUE SVG ICONS in nav */
 .ni svg{width:18px;height:18px;flex-shrink:0;}
-/* MAIN */
+
+/* ── MOBILE OVERLAY NAV ── */
+.nav-overlay{display:none;position:fixed;inset:0;z-index:300;}
+.nav-overlay.open{display:block;}
+.nav-backdrop{position:absolute;inset:0;background:rgba(0,0,0,.6);}
+.nav-drawer{position:absolute;top:0;left:0;width:280px;height:100%;background:var(--sb);border-right:1px solid var(--bdr);overflow-y:auto;transform:translateX(-100%);transition:transform .25s ease;}
+.nav-overlay.open .nav-drawer{transform:translateX(0);}
+.nav-drawer-header{display:flex;align-items:center;justify-content:space-between;padding:14px 18px;border-bottom:1px solid var(--bdr);}
+.nav-close{background:none;border:none;color:var(--t2);cursor:pointer;padding:6px;border-radius:6px;}
+.nav-close:hover{color:var(--t1);background:var(--hov);}
+
+/* ── MAIN ── */
 .main{flex:1;min-width:0;padding:20px 18px;}
-/* RIGHT SIDEBAR */
+
+/* ── RIGHT SIDEBAR ── */
 .rnav{width:290px;flex-shrink:0;padding:20px 16px;display:flex;flex-direction:column;gap:16px;}
-@media(max-width:1060px){.rnav{display:none;}}
-@media(max-width:720px){.lnav{display:none;}.main{padding:12px;}}
-/* PAGES */
+
+/* ── BOTTOM MOBILE NAV ── */
+.bottom-nav{display:none;position:fixed;bottom:0;left:0;right:0;background:#0d0f14;border-top:1px solid var(--bdr);z-index:200;padding:0 4px 4px;}
+.bottom-nav-inner{display:flex;justify-content:space-around;}
+.bnav-item{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;padding:10px 4px 6px;cursor:pointer;color:var(--t3);font-size:10px;font-weight:500;border:none;background:none;font-family:'Inter',sans-serif;transition:color .15s;}
+.bnav-item.on{color:var(--grn);}
+.bnav-item svg{width:20px;height:20px;flex-shrink:0;}
+.bnav-item:hover{color:var(--t1);}
+
+/* ── PAGES ── */
 .page{display:none;animation:fi .2s ease;}
 .page.on{display:block;}
 @keyframes fi{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}
-/* SECTION HDR */
+
+/* ── SECTION HDR ── */
 .shdr{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;}
 .stitle{font-size:15px;font-weight:700;color:var(--t1);display:flex;align-items:center;gap:8px;}
 .stitle::before{content:'';width:3px;height:16px;background:var(--grn);border-radius:2px;display:inline-block;}
 .slink{font-size:12px;color:var(--grn);font-weight:600;cursor:pointer;}
 .slink:hover{text-decoration:underline;}
-/* TABS */
+
+/* ── TABS ── */
 .tabs{display:flex;border-bottom:1px solid var(--bdr);margin-bottom:16px;overflow-x:auto;gap:0;}
 .tabs::-webkit-scrollbar{height:0;}
 .tb{padding:9px 16px;font-size:13px;font-weight:500;color:var(--t2);background:none;border:none;border-bottom:2px solid transparent;margin-bottom:-1px;white-space:nowrap;transition:color .12s;font-family:'Inter',sans-serif;}
@@ -66,13 +94,15 @@ button{font-family:'Inter',sans-serif;cursor:pointer;}
 .tb:focus-visible{outline:2px solid var(--grn);outline-offset:-2px;}
 .tp{display:none;}
 .tp.on{display:block;}
-/* LEAGUE BLOCK */
+
+/* ── LEAGUE BLOCK ── */
 .lb{background:var(--card);border:1px solid var(--bdr);border-radius:var(--r);overflow:hidden;margin-bottom:14px;}
 .lbh{display:flex;align-items:center;gap:10px;padding:10px 16px;background:var(--card2);border-bottom:1px solid var(--bdr);}
 .lbh-name{font-size:13px;font-weight:600;color:var(--t1);}
 .lbh-sub{font-size:11px;color:var(--t3);margin-left:auto;}
 .lbh svg{width:22px;height:22px;flex-shrink:0;}
-/* MATCH ROW */
+
+/* ── MATCH ROW ── */
 .mr{display:flex;align-items:center;padding:11px 16px;border-bottom:1px solid var(--bdr);cursor:pointer;transition:background .1s;gap:10px;}
 .mr:last-child{border-bottom:none;}
 .mr:hover{background:var(--hov);}
@@ -86,11 +116,10 @@ button{font-family:'Inter',sans-serif;cursor:pointer;}
 .ms.w{color:var(--grn);}
 .mtv{font-size:10px;color:var(--t3);background:var(--card2);padding:2px 7px;border-radius:4px;flex-shrink:0;}
 .mtn svg{width:18px;height:18px;flex-shrink:0;}
-/* TEAM LOGO SVG */
 svg.tlogo{width:22px;height:22px;flex-shrink:0;}
-/* NEWS */
+
+/* ── NEWS ── */
 .ngrid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px;}
-@media(max-width:580px){.ngrid{grid-template-columns:1fr;}}
 .nc{background:var(--card);border:1px solid var(--bdr);border-radius:var(--r);overflow:hidden;cursor:pointer;transition:border-color .15s,transform .15s;display:block;}
 .nc:hover{border-color:var(--grn);transform:translateY(-2px);}
 .nc:focus-visible{outline:2px solid var(--grn);}
@@ -108,13 +137,15 @@ svg.tlogo{width:22px;height:22px;flex-shrink:0;}
 .nlt svg{width:36px;height:36px;}
 .nli-title{font-size:13px;font-weight:500;color:var(--t1);line-height:1.4;margin-bottom:3px;}
 .nli-meta{font-size:11px;color:var(--t3);}
-/* WIDGET */
+
+/* ── WIDGET ── */
 .wgt{background:var(--card);border:1px solid var(--bdr);border-radius:var(--r);overflow:hidden;}
 .whdr{padding:11px 16px;border-bottom:1px solid var(--bdr);display:flex;align-items:center;justify-content:space-between;}
 .wtitle{font-size:13px;font-weight:600;color:var(--t1);}
 .wlink{font-size:11px;color:var(--grn);font-weight:600;cursor:pointer;}
 .wlink:hover{text-decoration:underline;}
-/* STANDINGS TABLE */
+
+/* ── STANDINGS ── */
 .stbl{width:100%;border-collapse:collapse;font-size:12px;}
 .stbl th{padding:7px 8px;font-size:10px;font-weight:600;color:var(--t3);text-transform:uppercase;letter-spacing:.5px;border-bottom:1px solid var(--bdr);text-align:center;}
 .stbl th:nth-child(2){text-align:left;}
@@ -135,7 +166,8 @@ svg.tlogo{width:22px;height:22px;flex-shrink:0;}
 .fw{background:var(--grn);}
 .fd2{background:var(--yel);}
 .fl{background:var(--red);}
-/* SCORERS */
+
+/* ── SCORERS ── */
 .scrow{display:flex;align-items:center;gap:10px;padding:10px 16px;border-bottom:1px solid var(--bdr);}
 .scrow:last-child{border-bottom:none;}
 .scpos{font-size:11px;font-weight:700;color:var(--t3);width:16px;}
@@ -144,7 +176,8 @@ svg.tlogo{width:22px;height:22px;flex-shrink:0;}
 .scname{font-size:13px;font-weight:600;color:var(--t1);}
 .scteam{font-size:11px;color:var(--t3);}
 .scg{font-size:18px;font-weight:800;color:var(--grn);}
-/* FIX */
+
+/* ── FIXTURES ── */
 .fcard{background:var(--card);border:1px solid var(--bdr);border-radius:var(--r);overflow:hidden;margin-bottom:14px;}
 .flg{display:flex;align-items:center;gap:8px;padding:8px 14px;background:var(--card2);border-bottom:1px solid var(--bdr);}
 .flg svg{width:20px;height:20px;}
@@ -161,7 +194,8 @@ svg.tlogo{width:22px;height:22px;flex-shrink:0;}
 .ftime{font-size:12px;font-weight:700;color:var(--t2);}
 .fdate{font-size:10px;color:var(--t3);}
 .ftv{font-size:10px;color:var(--t3);background:var(--card2);padding:2px 8px;border-radius:4px;}
-/* PLAYER CARDS */
+
+/* ── PLAYER CARDS ── */
 .pgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px;margin-bottom:14px;}
 .pcard{background:var(--card);border:1px solid var(--bdr);border-radius:var(--r);overflow:hidden;cursor:pointer;transition:border-color .15s;}
 .pcard:hover{border-color:var(--grn);}
@@ -175,7 +209,8 @@ svg.tlogo{width:22px;height:22px;flex-shrink:0;}
 .pst{background:var(--card2);border-radius:6px;padding:7px;text-align:center;}
 .pstn{font-size:16px;font-weight:800;color:var(--grn);}
 .pstl{font-size:9px;color:var(--t3);text-transform:uppercase;margin-top:1px;}
-/* HIST */
+
+/* ── HISTORY ── */
 .hcard{background:var(--card);border:1px solid var(--bdr);border-radius:var(--r);padding:20px;margin-bottom:14px;}
 .hpill{display:inline-block;background:var(--grn-a);color:var(--grn);font-size:10px;font-weight:700;padding:3px 10px;border-radius:20px;border:1px solid rgba(0,214,143,.2);margin-bottom:10px;text-transform:uppercase;letter-spacing:.5px;}
 .hpill.ec{background:rgba(255,216,77,.08);color:var(--yel);border-color:rgba(255,216,77,.2);}
@@ -183,7 +218,7 @@ svg.tlogo{width:22px;height:22px;flex-shrink:0;}
 .htitle{font-size:16px;font-weight:700;color:var(--t1);margin-bottom:10px;}
 .htext{font-size:13px;color:var(--t2);line-height:1.75;}
 .srow{display:grid;grid-template-columns:repeat(auto-fit,minmax(88px,1fr));gap:10px;margin:14px 0;}
-.sbox{background:var(--card2);border:1px solid var(--bdr);border-radius:8px;padding:11px;text-align:center;}
+.sbox2{background:var(--card2);border:1px solid var(--bdr);border-radius:8px;padding:11px;text-align:center;}
 .snum{font-size:22px;font-weight:800;color:var(--grn);}
 .slbl{font-size:10px;color:var(--t3);margin-top:2px;text-transform:uppercase;letter-spacing:.4px;}
 .tl{border-left:2px solid var(--bdr);padding-left:18px;margin:12px 0;}
@@ -218,7 +253,8 @@ svg.tlogo{width:22px;height:22px;flex-shrink:0;}
 .gcard{background:var(--card2);border:1px solid var(--bdr);border-radius:8px;padding:12px;border-left:3px solid var(--grn);}
 .gcn{font-weight:700;font-size:13px;color:var(--t1);margin-bottom:2px;}
 .gci{font-size:11px;color:var(--t3);}
-/* FORM */
+
+/* ── COMMUNITY FORM ── */
 .fmcard{background:var(--card);border:1px solid var(--bdr);border-radius:var(--r);padding:20px;margin-bottom:16px;}
 .fmtitle{font-size:15px;font-weight:700;color:var(--t1);margin-bottom:16px;}
 .fmrow{margin-bottom:12px;}
@@ -235,237 +271,271 @@ svg.tlogo{width:22px;height:22px;flex-shrink:0;}
 .cin{font-weight:600;font-size:13px;color:var(--grn);}
 .cid{font-size:11px;color:var(--t3);}
 .cit{font-size:13px;color:var(--t2);line-height:1.65;}
-/* TOAST */
-.toast{position:fixed;bottom:24px;right:24px;background:var(--card2);color:var(--t1);padding:12px 18px;border-radius:8px;font-size:13px;font-weight:500;display:none;align-items:center;gap:10px;border-left:3px solid var(--grn);z-index:9999;box-shadow:0 8px 32px rgba(0,0,0,.4);}
+
+/* ── TOAST ── */
+.toast{position:fixed;bottom:70px;right:16px;background:var(--card2);color:var(--t1);padding:12px 18px;border-radius:8px;font-size:13px;font-weight:500;display:none;align-items:center;gap:10px;border-left:3px solid var(--grn);z-index:9999;box-shadow:0 8px 32px rgba(0,0,0,.4);}
 .toast.show{display:flex;}
 .sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;}
-footer{background:#0d0f14;border-top:1px solid var(--bdr);padding:18px 24px;text-align:center;}
+
+footer{background:#0d0f14;border-top:1px solid var(--bdr);padding:18px 24px;text-align:center;margin-bottom:0;}
+
+/* ══════════════════════════════
+   RESPONSIVE BREAKPOINTS
+══════════════════════════════ */
+
+/* Tablet: ocultar sidebar derecho */
+@media(max-width:1060px){
+  .rnav{display:none;}
+}
+
+/* Móvil: ocultar nav izquierdo permanente, mostrar hamburguesa y bottom-nav */
+@media(max-width:720px){
+  .lnav{display:none;}
+  .menu-btn{display:flex;}
+  .main{padding:12px 12px 80px;}
+  .bottom-nav{display:block;}
+  footer{padding-bottom:20px;}
+  .toast{bottom:74px;}
+  .ngrid{grid-template-columns:1fr;}
+  .pgrid{grid-template-columns:1fr 1fr;}
+  .fmatch{padding:10px 12px;}
+  .fcenter{min-width:60px;}
+  .ftn{font-size:12px;}
+}
+
+@media(max-width:420px){
+  .pgrid{grid-template-columns:1fr;}
+  .logo-sub{display:none;}
+  .sbox{max-width:180px;}
+}
 </style>
 </head>
 <body>
 <a href="#mc" class="skip">Saltar al contenido</a>
 <div id="toast" class="toast" role="status" aria-live="polite"></div>
 
-<!-- TOPBAR -->
+<!-- ══ MOBILE DRAWER OVERLAY ══ -->
+<div id="nav-overlay" class="nav-overlay" role="dialog" aria-label="Menú de navegación" aria-modal="true">
+  <div class="nav-backdrop" onclick="closeDrawer()"></div>
+  <nav class="nav-drawer">
+    <div class="nav-drawer-header">
+      <div class="logo">
+        <div class="logo-icon" aria-hidden="true"><span class="logo-ltr">T&amp;P</span></div>
+        <div><div class="logo-name">Toque <span>&amp;</span> Pase</div></div>
+      </div>
+      <button class="nav-close" onclick="closeDrawer()" aria-label="Cerrar menú">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <!-- Mismos items del nav, con acción extra de cerrar drawer -->
+    <div class="nl">Principal</div>
+    <div class="ni" id="dnav-inicio" onclick="goTo('inicio');closeDrawer()" tabindex="0" role="button">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>Inicio
+    </div>
+    <div class="ni" id="dnav-noticias" onclick="goTo('noticias');closeDrawer()" tabindex="0" role="button">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 0-2 2zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2"/><path d="M18 14h-8"/><path d="M15 18h-5"/><path d="M10 6h8v4h-8V6z"/></svg>Noticias
+    </div>
+    <div class="ni" id="dnav-partidos" onclick="goTo('partidos');closeDrawer()" tabindex="0" role="button">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>Partidos
+    </div>
+    <div class="ni" id="dnav-tabla" onclick="goTo('tabla');closeDrawer()" tabindex="0" role="button">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>Tabla
+    </div>
+    <div class="ni" id="dnav-equipos" onclick="goTo('equipos');closeDrawer()" tabindex="0" role="button">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>Equipos
+    </div>
+    <div class="ni" id="dnav-jugadores" onclick="goTo('jugadores');closeDrawer()" tabindex="0" role="button">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="5"/><path d="M20 21a8 8 0 1 0-16 0"/></svg>Jugadores
+    </div>
+    <div class="ni" id="dnav-historia" onclick="goTo('historia');closeDrawer()" tabindex="0" role="button">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>Historia
+    </div>
+    <div class="ni" id="dnav-comunidad" onclick="goTo('comunidad');closeDrawer()" tabindex="0" role="button">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>Comunidad
+    </div>
+    <div class="ndiv"></div>
+    <div class="nl">Ligas</div>
+    <div class="ni" onclick="goTo('tabla');closeDrawer()" tabindex="0" role="button">
+      <svg viewBox="0 0 22 22" style="width:18px;height:18px;"><circle cx="11" cy="11" r="11" fill="#FFD700"/><path d="M0 11 h22" stroke="#003DA5" stroke-width="4"/><path d="M0 15 h22" stroke="#CF142B" stroke-width="4"/></svg>LigaPro Ecuador
+    </div>
+    <div class="ni" onclick="goTo('tabla');closeDrawer()" tabindex="0" role="button">
+      <svg viewBox="0 0 22 22" style="width:18px;height:18px;"><rect width="22" height="22" rx="3" fill="#C60B1E"/><rect y="7" width="22" height="8" fill="#FFC400"/></svg>LaLiga España
+    </div>
+    <div class="ni" onclick="goTo('tabla');closeDrawer()" tabindex="0" role="button">
+      <svg viewBox="0 0 22 22" style="width:18px;height:18px;"><rect width="22" height="22" rx="3" fill="#012169"/><path d="M0,0 L22,22 M22,0 L0,22" stroke="#fff" stroke-width="4.5"/><path d="M11,0 V22 M0,11 H22" stroke="#fff" stroke-width="7"/><path d="M11,0 V22 M0,11 H22" stroke="#C8102E" stroke-width="4.5"/><path d="M0,0 L22,22 M22,0 L0,22" stroke="#C8102E" stroke-width="3"/></svg>Premier League
+    </div>
+    <div class="ni" onclick="goTo('tabla');closeDrawer()" tabindex="0" role="button">
+      <svg viewBox="0 0 22 22" style="width:18px;height:18px;"><rect width="22" height="22" rx="3" fill="#000"/><rect x="7.3" width="7.4" height="22" fill="#DD0000"/><rect x="14.7" width="7.3" height="22" fill="#FFCE00"/></svg>Bundesliga
+    </div>
+    <div class="ni" onclick="goTo('tabla');closeDrawer()" tabindex="0" role="button">
+      <svg viewBox="0 0 22 22" style="width:18px;height:18px;"><rect width="7.3" height="22" fill="#009246"/><rect x="7.3" width="7.4" height="22" fill="#fff"/><rect x="14.7" width="7.3" height="22" fill="#CE2B37"/></svg>Serie A Italia
+    </div>
+    <div class="ni" onclick="goTo('tabla');closeDrawer()" tabindex="0" role="button">
+      <svg viewBox="0 0 22 22" style="width:18px;height:18px;"><rect width="22" height="22" rx="3" fill="#071D49"/><text x="11" y="16" text-anchor="middle" font-size="13" fill="#00E0FF">★</text></svg>Champions League
+    </div>
+  </nav>
+</div>
+
+<!-- ══ TOPBAR ══ -->
 <header class="topbar" aria-label="Toque y Pase">
   <div class="topbar-inner">
+    <!-- Hamburger (móvil) -->
+    <button class="menu-btn" onclick="openDrawer()" aria-label="Abrir menú" aria-expanded="false" id="hamburger-btn">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
     <div class="logo" onclick="goTo('inicio')" role="button" tabindex="0" aria-label="Toque y Pase inicio" onkeydown="if(event.key==='Enter')goTo('inicio')">
       <div class="logo-icon" aria-hidden="true"><span class="logo-ltr">T&amp;P</span></div>
       <div><div class="logo-name">Toque <span>&amp;</span> Pase</div><div class="logo-sub">Solo fútbol</div></div>
     </div>
     <div class="sbox" role="search">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#5c6070" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-      <input type="search" placeholder="Buscar equipo, jugador, liga..." aria-label="Buscar" oninput="handleSearch(this.value)"/>
+      <input type="search" placeholder="Buscar..." aria-label="Buscar" oninput="handleSearch(this.value)"/>
     </div>
   </div>
 </header>
 
 <div class="layout">
-<!-- LEFT NAV -->
+<!-- ══ LEFT NAV (desktop) ══ -->
 <nav class="lnav" aria-label="Navegación principal">
   <div class="nl">Principal</div>
   <div class="ni on" id="nav-inicio" onclick="goTo('inicio')" tabindex="0" role="button" aria-current="page">
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>Inicio
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>Inicio
   </div>
   <div class="ni" id="nav-noticias" onclick="goTo('noticias')" tabindex="0" role="button">
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 0-2 2zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2"/><path d="M18 14h-8"/><path d="M15 18h-5"/><path d="M10 6h8v4h-8V6z"/></svg>Noticias
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 0-2 2zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2"/><path d="M18 14h-8"/><path d="M15 18h-5"/><path d="M10 6h8v4h-8V6z"/></svg>Noticias
   </div>
   <div class="ni" id="nav-partidos" onclick="goTo('partidos')" tabindex="0" role="button">
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>Partidos
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>Partidos
   </div>
   <div class="ni" id="nav-tabla" onclick="goTo('tabla')" tabindex="0" role="button">
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>Tabla
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>Tabla
   </div>
   <div class="ni" id="nav-equipos" onclick="goTo('equipos')" tabindex="0" role="button">
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>Equipos
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>Equipos
   </div>
   <div class="ni" id="nav-jugadores" onclick="goTo('jugadores')" tabindex="0" role="button">
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="8" r="5"/><path d="M20 21a8 8 0 1 0-16 0"/></svg>Jugadores
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="5"/><path d="M20 21a8 8 0 1 0-16 0"/></svg>Jugadores
   </div>
   <div class="ni" id="nav-historia" onclick="goTo('historia')" tabindex="0" role="button">
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>Historia
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>Historia
   </div>
   <div class="ni" id="nav-comunidad" onclick="goTo('comunidad')" tabindex="0" role="button">
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>Comunidad
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>Comunidad
   </div>
   <div class="ndiv"></div>
   <div class="nl">Ligas</div>
   <div class="ni" onclick="goTo('tabla')" tabindex="0" role="button">
-    <!-- Ecuador flag colors -->
-    <svg viewBox="0 0 22 22" aria-hidden="true"><circle cx="11" cy="11" r="11" fill="#FFD700"/><path d="M0 11 h22" stroke="#003DA5" stroke-width="4"/><path d="M0 15 h22" stroke="#CF142B" stroke-width="4"/></svg>LigaPro Ecuador
+    <svg viewBox="0 0 22 22" style="width:18px;height:18px;" aria-hidden="true"><circle cx="11" cy="11" r="11" fill="#FFD700"/><path d="M0 11 h22" stroke="#003DA5" stroke-width="4"/><path d="M0 15 h22" stroke="#CF142B" stroke-width="4"/></svg>LigaPro Ecuador
   </div>
   <div class="ni" onclick="goTo('tabla')" tabindex="0" role="button">
-    <svg viewBox="0 0 22 22" aria-hidden="true"><rect width="22" height="22" rx="3" fill="#C60B1E"/><rect y="7" width="22" height="8" fill="#FFC400"/></svg>LaLiga España
+    <svg viewBox="0 0 22 22" style="width:18px;height:18px;" aria-hidden="true"><rect width="22" height="22" rx="3" fill="#C60B1E"/><rect y="7" width="22" height="8" fill="#FFC400"/></svg>LaLiga España
   </div>
   <div class="ni" onclick="goTo('tabla')" tabindex="0" role="button">
-    <svg viewBox="0 0 22 22" aria-hidden="true"><rect width="22" height="22" rx="3" fill="#012169"/><path d="M0,0 L22,22 M22,0 L0,22" stroke="#fff" stroke-width="4.5"/><path d="M11,0 V22 M0,11 H22" stroke="#fff" stroke-width="7"/><path d="M11,0 V22 M0,11 H22" stroke="#C8102E" stroke-width="4.5"/><path d="M0,0 L22,22 M22,0 L0,22" stroke="#C8102E" stroke-width="3"/></svg>Premier League
+    <svg viewBox="0 0 22 22" style="width:18px;height:18px;" aria-hidden="true"><rect width="22" height="22" rx="3" fill="#012169"/><path d="M0,0 L22,22 M22,0 L0,22" stroke="#fff" stroke-width="4.5"/><path d="M11,0 V22 M0,11 H22" stroke="#fff" stroke-width="7"/><path d="M11,0 V22 M0,11 H22" stroke="#C8102E" stroke-width="4.5"/><path d="M0,0 L22,22 M22,0 L0,22" stroke="#C8102E" stroke-width="3"/></svg>Premier League
   </div>
   <div class="ni" onclick="goTo('tabla')" tabindex="0" role="button">
-    <svg viewBox="0 0 22 22" aria-hidden="true"><rect width="22" height="22" rx="3" fill="#000"/><rect width="7.3" height="22" fill="#000"/><rect x="7.3" width="7.4" height="22" fill="#DD0000"/><rect x="14.7" width="7.3" height="22" fill="#FFCE00"/></svg>Bundesliga
+    <svg viewBox="0 0 22 22" style="width:18px;height:18px;" aria-hidden="true"><rect width="22" height="22" rx="3" fill="#000"/><rect x="7.3" width="7.4" height="22" fill="#DD0000"/><rect x="14.7" width="7.3" height="22" fill="#FFCE00"/></svg>Bundesliga
   </div>
   <div class="ni" onclick="goTo('tabla')" tabindex="0" role="button">
-    <svg viewBox="0 0 22 22" aria-hidden="true"><rect width="7.3" height="22" fill="#009246" rx="0"/><rect x="7.3" width="7.4" height="22" fill="#fff"/><rect x="14.7" width="7.3" height="22" fill="#CE2B37"/><rect width="22" height="22" rx="3" fill="none" stroke="rgba(255,255,255,.1)"/></svg>Serie A Italia
+    <svg viewBox="0 0 22 22" style="width:18px;height:18px;" aria-hidden="true"><rect width="7.3" height="22" fill="#009246"/><rect x="7.3" width="7.4" height="22" fill="#fff"/><rect x="14.7" width="7.3" height="22" fill="#CE2B37"/></svg>Serie A Italia
   </div>
   <div class="ni" onclick="goTo('tabla')" tabindex="0" role="button">
-    <!-- UCL star icon -->
-    <svg viewBox="0 0 22 22" aria-hidden="true"><rect width="22" height="22" rx="3" fill="#071D49"/><text x="11" y="16" text-anchor="middle" font-size="13" fill="#00E0FF">★</text></svg>Champions League
+    <svg viewBox="0 0 22 22" style="width:18px;height:18px;" aria-hidden="true"><rect width="22" height="22" rx="3" fill="#071D49"/><text x="11" y="16" text-anchor="middle" font-size="13" fill="#00E0FF">★</text></svg>Champions League
   </div>
   <div class="ndiv"></div>
   <div class="nl">Ecuador</div>
   <div class="ni" onclick="goTo('equipos')" tabindex="0" role="button">
-    <svg viewBox="0 0 22 22" aria-hidden="true"><circle cx="11" cy="11" r="10" fill="#FFE000" stroke="#222" stroke-width="1"/><text x="11" y="15.5" text-anchor="middle" font-size="11" fill="#222">La Tri</text></svg>La Tri
+    <svg viewBox="0 0 22 22" style="width:18px;height:18px;" aria-hidden="true"><circle cx="11" cy="11" r="10" fill="#FFE000" stroke="#222" stroke-width="1"/><text x="11" y="15.5" text-anchor="middle" font-size="11" fill="#222">La Tri</text></svg>La Tri
   </div>
   <div class="ni" onclick="goTo('tabla')" tabindex="0" role="button">
-    <svg viewBox="0 0 22 22" aria-hidden="true"><circle cx="11" cy="11" r="10" fill="#1a5c2a" stroke="#222" stroke-width="1"/><text x="11" y="15.5" text-anchor="middle" font-size="10" fill="#fff">Copa</text></svg>Copa Ecuador
+    <svg viewBox="0 0 22 22" style="width:18px;height:18px;" aria-hidden="true"><circle cx="11" cy="11" r="10" fill="#1a5c2a" stroke="#222" stroke-width="1"/><text x="11" y="15.5" text-anchor="middle" font-size="10" fill="#fff">Copa</text></svg>Copa Ecuador
   </div>
 </nav>
 
-<!-- MAIN -->
+<!-- ══ MAIN ══ -->
 <main id="mc" class="main">
 
 <!-- ═══ INICIO ═══ -->
 <div id="page-inicio" class="page on" aria-label="Inicio">
   <div class="shdr"><h1 class="stitle">Partidos de hoy — <span id="current-date"></span></h1></div>
 
-  <!-- CHAMPIONS -->
   <div class="lb" aria-label="Champions League semifinales">
     <div class="lbh">
-      <svg viewBox="0 0 22 22" aria-label="UEFA Champions League"><rect width="22" height="22" rx="3" fill="#071D49"/><text x="11" y="16" text-anchor="middle" font-size="13" fill="#00E0FF">★</text></svg>
+      <svg viewBox="0 0 22 22" style="width:22px;height:22px;"><rect width="22" height="22" rx="3" fill="#071D49"/><text x="11" y="16" text-anchor="middle" font-size="13" fill="#00E0FF">★</text></svg>
       <span class="lbh-name">UEFA Champions League</span><span class="lbh-sub">Semifinal – Ida</span>
     </div>
-    <div class="mr" tabindex="0" role="button" aria-label="PSG vs Bayern Múnich, hoy 14:00 Ecuador, ESPN, semifinal Champions" onclick="toast('Abriendo PSG vs Bayern — 14:00 EC / 21:00 París')">
+    <div class="mr" tabindex="0" role="button" aria-label="PSG vs Bayern Múnich, hoy 14:00 Ecuador" onclick="toast('PSG vs Bayern — 14:00 EC / 21:00 París')">
       <div class="mt">14:00<br><span style="color:var(--grn);font-size:9px;">EC</span></div>
       <div class="mts">
-        <div class="mtr">
-          <span class="mtn">
-            <!-- PSG logo -->
-            <svg class="tlogo" viewBox="0 0 22 22" aria-label="PSG"><circle cx="11" cy="11" r="10" fill="#003D83"/><circle cx="11" cy="11" r="6" fill="#fff"/><text x="11" y="14.5" text-anchor="middle" font-size="7" fill="#003D83" font-weight="bold">PSG</text></svg>
-            Paris Saint-Germain
-          </span>
-        </div>
-        <div class="mtr">
-          <span class="mtn dim">
-            <svg class="tlogo" viewBox="0 0 22 22" aria-label="Bayern Munich"><circle cx="11" cy="11" r="10" fill="#DC052D"/><text x="11" y="14.5" text-anchor="middle" font-size="7" fill="#fff" font-weight="bold">FCB</text></svg>
-            Bayern München
-          </span>
-        </div>
+        <div class="mtr"><span class="mtn"><svg class="tlogo" viewBox="0 0 22 22"><circle cx="11" cy="11" r="10" fill="#003D83"/><circle cx="11" cy="11" r="6" fill="#fff"/><text x="11" y="14.5" text-anchor="middle" font-size="7" fill="#003D83" font-weight="bold">PSG</text></svg>Paris Saint-Germain</span></div>
+        <div class="mtr"><span class="mtn dim"><svg class="tlogo" viewBox="0 0 22 22"><circle cx="11" cy="11" r="10" fill="#DC052D"/><text x="11" y="14.5" text-anchor="middle" font-size="7" fill="#fff" font-weight="bold">FCB</text></svg>Bayern München</span></div>
       </div>
-      <span class="mtv">ESPN / Disney+</span>
+      <span class="mtv">ESPN</span>
     </div>
-    <div class="mr" tabindex="0" role="button" aria-label="Atlético de Madrid vs Arsenal, mañana 29 abril, semifinal Champions" onclick="toast('Atlético de Madrid vs Arsenal — Mié 29 Abr · 14:00 EC')">
+    <div class="mr" tabindex="0" role="button" aria-label="Atlético de Madrid vs Arsenal, 29 abril" onclick="toast('Atlético de Madrid vs Arsenal — Mié 29 Abr · 14:00 EC')">
       <div class="mt">Mié<br>29 Abr</div>
       <div class="mts">
-        <div class="mtr">
-          <span class="mtn">
-            <svg class="tlogo" viewBox="0 0 22 22" aria-label="Atlético de Madrid"><circle cx="11" cy="11" r="10" fill="#CC0000"/><text x="11" y="14.5" text-anchor="middle" font-size="7" fill="#fff" font-weight="bold">ATM</text></svg>
-            Atlético de Madrid
-          </span>
-        </div>
-        <div class="mtr">
-          <span class="mtn dim">
-            <svg class="tlogo" viewBox="0 0 22 22" aria-label="Arsenal"><circle cx="11" cy="11" r="10" fill="#EF0107"/><text x="11" y="14.5" text-anchor="middle" font-size="7" fill="#fff" font-weight="bold">ARS</text></svg>
-            Arsenal FC
-          </span>
-        </div>
+        <div class="mtr"><span class="mtn"><svg class="tlogo" viewBox="0 0 22 22"><circle cx="11" cy="11" r="10" fill="#CC0000"/><text x="11" y="14.5" text-anchor="middle" font-size="7" fill="#fff" font-weight="bold">ATM</text></svg>Atlético de Madrid</span></div>
+        <div class="mtr"><span class="mtn dim"><svg class="tlogo" viewBox="0 0 22 22"><circle cx="11" cy="11" r="10" fill="#EF0107"/><text x="11" y="14.5" text-anchor="middle" font-size="7" fill="#fff" font-weight="bold">ARS</text></svg>Arsenal FC</span></div>
       </div>
-      <span class="mtv">ESPN / Disney+</span>
+      <span class="mtv">ESPN</span>
     </div>
   </div>
 
-  <!-- LaLiga -->
   <div class="lb" aria-label="LaLiga España">
     <div class="lbh">
-      <svg viewBox="0 0 22 22" aria-label="LaLiga España"><rect width="22" height="22" rx="3" fill="#C60B1E"/><rect y="7" width="22" height="8" fill="#FFC400"/></svg>
+      <svg viewBox="0 0 22 22" style="width:22px;height:22px;"><rect width="22" height="22" rx="3" fill="#C60B1E"/><rect y="7" width="22" height="8" fill="#FFC400"/></svg>
       <span class="lbh-name">LaLiga EA Sports</span><span class="lbh-sub">Jornada 34</span>
     </div>
-    <div class="mr" tabindex="0" role="button" aria-label="Real Madrid 0-1 Betis, resultado final jornada 33" onclick="toast('Real Madrid 0–1 Betis — Jornada 33 · Final')">
+    <div class="mr" tabindex="0" role="button" onclick="toast('Real Madrid 0–1 Betis — Jornada 33 · Final')">
       <div class="mt" style="color:var(--t3);">FIN</div>
       <div class="mts">
-        <div class="mtr">
-          <span class="mtn">
-            <svg class="tlogo" viewBox="0 0 22 22" aria-label="Real Madrid"><circle cx="11" cy="11" r="10" fill="#fff" stroke="#bbb" stroke-width="1"/><text x="11" y="14.5" text-anchor="middle" font-size="7" fill="#00529F" font-weight="bold">RMA</text></svg>
-            Real Madrid
-          </span><span class="ms">0</span>
-        </div>
-        <div class="mtr">
-          <span class="mtn dim">
-            <svg class="tlogo" viewBox="0 0 22 22" aria-label="Real Betis"><circle cx="11" cy="11" r="10" fill="#00954C"/><text x="11" y="14.5" text-anchor="middle" font-size="7" fill="#fff" font-weight="bold">BET</text></svg>
-            Real Betis
-          </span><span class="ms w">1</span>
-        </div>
+        <div class="mtr"><span class="mtn"><svg class="tlogo" viewBox="0 0 22 22"><circle cx="11" cy="11" r="10" fill="#fff" stroke="#bbb" stroke-width="1"/><text x="11" y="14.5" text-anchor="middle" font-size="7" fill="#00529F" font-weight="bold">RMA</text></svg>Real Madrid</span><span class="ms">0</span></div>
+        <div class="mtr"><span class="mtn dim"><svg class="tlogo" viewBox="0 0 22 22"><circle cx="11" cy="11" r="10" fill="#00954C"/><text x="11" y="14.5" text-anchor="middle" font-size="7" fill="#fff" font-weight="bold">BET</text></svg>Real Betis</span><span class="ms w">1</span></div>
       </div>
       <span class="mtv">ESPN</span>
     </div>
-    <div class="mr" tabindex="0" role="button" aria-label="Barcelona venció al Getafe, resultado final" onclick="toast('Barcelona venció al Getafe — Jornada 33')">
+    <div class="mr" tabindex="0" role="button" onclick="toast('Barcelona venció al Getafe — Jornada 33')">
       <div class="mt" style="color:var(--t3);">FIN</div>
       <div class="mts">
-        <div class="mtr">
-          <span class="mtn">
-            <svg class="tlogo" viewBox="0 0 22 22" aria-label="FC Barcelona"><circle cx="11" cy="11" r="10" fill="#004D98"/><text x="11" y="14.5" text-anchor="middle" font-size="7" fill="#fff" font-weight="bold">FCB</text></svg>
-            FC Barcelona
-          </span><span class="ms w">2</span>
-        </div>
-        <div class="mtr">
-          <span class="mtn dim">
-            <svg class="tlogo" viewBox="0 0 22 22" aria-label="Getafe CF"><circle cx="11" cy="11" r="10" fill="#0066CC"/><text x="11" y="14.5" text-anchor="middle" font-size="7" fill="#fff" font-weight="bold">GET</text></svg>
-            Getafe CF
-          </span><span class="ms">0</span>
-        </div>
+        <div class="mtr"><span class="mtn"><svg class="tlogo" viewBox="0 0 22 22"><circle cx="11" cy="11" r="10" fill="#004D98"/><text x="11" y="14.5" text-anchor="middle" font-size="7" fill="#fff" font-weight="bold">FCB</text></svg>FC Barcelona</span><span class="ms w">2</span></div>
+        <div class="mtr"><span class="mtn dim"><svg class="tlogo" viewBox="0 0 22 22"><circle cx="11" cy="11" r="10" fill="#0066CC"/><text x="11" y="14.5" text-anchor="middle" font-size="7" fill="#fff" font-weight="bold">GET</text></svg>Getafe CF</span><span class="ms">0</span></div>
       </div>
       <span class="mtv">ESPN</span>
     </div>
   </div>
 
-  <!-- Copa Libertadores -->
   <div class="lb" aria-label="Copa Libertadores 2026">
     <div class="lbh">
-      <svg viewBox="0 0 22 22" aria-label="Copa Libertadores"><rect width="22" height="22" rx="3" fill="#F5A800"/><text x="11" y="15" text-anchor="middle" font-size="9" fill="#000" font-weight="bold">LIBT</text></svg>
+      <svg viewBox="0 0 22 22" style="width:22px;height:22px;"><rect width="22" height="22" rx="3" fill="#F5A800"/><text x="11" y="15" text-anchor="middle" font-size="9" fill="#000" font-weight="bold">LIBT</text></svg>
       <span class="lbh-name">Copa Libertadores 2026</span><span class="lbh-sub">Fase de grupos — Jornada 3</span>
     </div>
-    <div class="mr" tabindex="0" role="button" aria-label="LDU Quito vs Lanús, hoy 17:00 Ecuador, Copa Libertadores" onclick="toast('LDU Quito vs Lanús — 17:00 EC · Copa Libertadores')">
+    <div class="mr" tabindex="0" role="button" onclick="toast('LDU Quito vs Lanús — 17:00 EC · Copa Libertadores')">
       <div class="mt">17:00<br><span style="color:var(--grn);font-size:9px;">EC</span></div>
       <div class="mts">
-        <div class="mtr">
-          <span class="mtn">
-            <svg class="tlogo" viewBox="0 0 22 22" aria-label="LDU Quito"><circle cx="11" cy="11" r="10" fill="#fff" stroke="#002366" stroke-width="2"/><text x="11" y="14.5" text-anchor="middle" font-size="7" fill="#002366" font-weight="bold">LDU</text></svg>
-            LDU Quito
-          </span>
-        </div>
-        <div class="mtr">
-          <span class="mtn dim">
-            <svg class="tlogo" viewBox="0 0 22 22" aria-label="Lanús"><circle cx="11" cy="11" r="10" fill="#CC0000"/><text x="11" y="14.5" text-anchor="middle" font-size="7" fill="#fff" font-weight="bold">LAN</text></svg>
-            Lanús
-          </span>
-        </div>
+        <div class="mtr"><span class="mtn"><svg class="tlogo" viewBox="0 0 22 22"><circle cx="11" cy="11" r="10" fill="#fff" stroke="#002366" stroke-width="2"/><text x="11" y="14.5" text-anchor="middle" font-size="7" fill="#002366" font-weight="bold">LDU</text></svg>LDU Quito</span></div>
+        <div class="mtr"><span class="mtn dim"><svg class="tlogo" viewBox="0 0 22 22"><circle cx="11" cy="11" r="10" fill="#CC0000"/><text x="11" y="14.5" text-anchor="middle" font-size="7" fill="#fff" font-weight="bold">LAN</text></svg>Lanús</span></div>
       </div>
-      <span class="mtv">ESPN / Disney+</span>
+      <span class="mtv">ESPN</span>
     </div>
   </div>
 
   <div class="shdr" style="margin-top:4px;"><h2 class="stitle">Últimas noticias</h2><span class="slink" onclick="goTo('noticias')">Ver todas →</span></div>
   <div class="nlist">
-    <div class="nli" tabindex="0" onclick="goTo('noticias')" aria-label="Noticia: Willian Pacho juega su segunda semifinal de Champions con PSG">
-      <div class="nlt" style="background:rgba(0,61,131,.3);">
-        <svg viewBox="0 0 22 22"><circle cx="11" cy="11" r="10" fill="#003D83"/><circle cx="11" cy="11" r="6" fill="#fff"/><text x="11" y="14.5" text-anchor="middle" font-size="7" fill="#003D83" font-weight="bold">PSG</text></svg>
-      </div>
+    <div class="nli" tabindex="0" onclick="goTo('noticias')" aria-label="Willian Pacho, 2ª semifinal de Champions con PSG">
+      <div class="nlt" style="background:rgba(0,61,131,.3);"><svg viewBox="0 0 22 22"><circle cx="11" cy="11" r="10" fill="#003D83"/><circle cx="11" cy="11" r="6" fill="#fff"/><text x="11" y="14.5" text-anchor="middle" font-size="7" fill="#003D83" font-weight="bold">PSG</text></svg></div>
       <div><div class="nli-title">Willian Pacho, 2ª semifinal seguida de Champions con PSG. El ecuatoriano es pieza clave junto a Marquinhos ante el ataque de Kane y Díaz</div><div class="nli-meta">Ecuador · Champions · hace 3 h · El Universo</div></div>
     </div>
-    <div class="nli" tabindex="0" onclick="goTo('noticias')" aria-label="Noticia: Barcelona lidera LaLiga con 82 puntos, Real Madrid 9 abajo">
-      <div class="nlt" style="background:rgba(0,77,152,.3);">
-        <svg viewBox="0 0 22 22"><circle cx="11" cy="11" r="10" fill="#004D98"/><text x="11" y="14.5" text-anchor="middle" font-size="7" fill="#fff" font-weight="bold">FCB</text></svg>
-      </div>
-      <div><div class="nli-title">Barcelona lidera LaLiga con 82 puntos tras ganar al Getafe. Real Madrid queda 9 puntos atrás con 5 fechas por disputar</div><div class="nli-meta">LaLiga · hace 5 h · La Prensa HN / Claro Sports</div></div>
+    <div class="nli" tabindex="0" onclick="goTo('noticias')">
+      <div class="nlt" style="background:rgba(0,77,152,.3);"><svg viewBox="0 0 22 22"><circle cx="11" cy="11" r="10" fill="#004D98"/><text x="11" y="14.5" text-anchor="middle" font-size="7" fill="#fff" font-weight="bold">FCB</text></svg></div>
+      <div><div class="nli-title">Barcelona lidera LaLiga con 82 puntos tras ganar al Getafe. Real Madrid queda 9 puntos atrás con 5 fechas por disputar</div><div class="nli-meta">LaLiga · hace 5 h · Claro Sports</div></div>
     </div>
-    <div class="nli" tabindex="0" onclick="goTo('noticias')" aria-label="Noticia: Harry Kane es el 2do goleador de Champions con 12 goles">
-      <div class="nlt" style="background:rgba(220,5,45,.3);">
-        <svg viewBox="0 0 22 22"><circle cx="11" cy="11" r="10" fill="#DC052D"/><text x="11" y="14.5" text-anchor="middle" font-size="7" fill="#fff" font-weight="bold">FCB</text></svg>
-      </div>
-      <div><div class="nli-title">Harry Kane: 53 goles en 45 partidos con Bayern esta temporada. Llega como 2do goleador de la Champions con 12 tantos</div><div class="nli-meta">Champions · hace 6 h · CNN Español / Al Jazeera</div></div>
+    <div class="nli" tabindex="0" onclick="goTo('noticias')">
+      <div class="nlt" style="background:rgba(220,5,45,.3);"><svg viewBox="0 0 22 22"><circle cx="11" cy="11" r="10" fill="#DC052D"/><text x="11" y="14.5" text-anchor="middle" font-size="7" fill="#fff" font-weight="bold">FCB</text></svg></div>
+      <div><div class="nli-title">Harry Kane: 53 goles en 45 partidos con Bayern esta temporada. 2do goleador de la Champions con 12 tantos</div><div class="nli-meta">Champions · hace 6 h · ESPN</div></div>
     </div>
-    <div class="nli" tabindex="0" onclick="goTo('noticias')" aria-label="Noticia: Bayern elimina al Real Madrid 6-4 global en cuartos de Champions">
-      <div class="nlt" style="background:rgba(220,5,45,.3);">
-        <svg viewBox="0 0 22 22"><circle cx="11" cy="11" r="10" fill="#DC052D"/><text x="11" y="14.5" text-anchor="middle" font-size="7" fill="#fff" font-weight="bold">FCB</text></svg>
-      </div>
+    <div class="nli" tabindex="0" onclick="goTo('noticias')">
+      <div class="nlt" style="background:rgba(220,5,45,.3);"><svg viewBox="0 0 22 22"><circle cx="11" cy="11" r="10" fill="#DC052D"/><text x="11" y="14.5" text-anchor="middle" font-size="7" fill="#fff" font-weight="bold">FCB</text></svg></div>
       <div><div class="nli-title">Bayern eliminó al Real Madrid 6-4 global en cuartos. Gol agónico de Luis Díaz en el 87' selló el pase a semifinales</div><div class="nli-meta">Champions · hace 12 d · CNN Español</div></div>
     </div>
   </div>
@@ -483,88 +553,61 @@ footer{background:#0d0f14;border-top:1px solid var(--bdr);padding:18px 24px;text
 
   <div id="np-all" class="tp on" role="tabpanel">
     <div class="ngrid">
-      <div class="nc" tabindex="0" aria-label="PSG vs Bayern: Pacho anticipa duelo de alto voltaje. 27 Abr 2026">
+      <div class="nc" tabindex="0">
         <div class="nimg" style="background:linear-gradient(135deg,#071D49,#003D83);">
-          <svg width="60" height="60" viewBox="0 0 22 22" aria-hidden="true"><circle cx="11" cy="11" r="10" fill="#003D83"/><circle cx="11" cy="11" r="6" fill="#fff"/><text x="11" y="14.5" text-anchor="middle" font-size="7" fill="#003D83" font-weight="bold">PSG</text></svg>
+          <svg width="60" height="60" viewBox="0 0 22 22"><circle cx="11" cy="11" r="10" fill="#003D83"/><circle cx="11" cy="11" r="6" fill="#fff"/><text x="11" y="14.5" text-anchor="middle" font-size="7" fill="#003D83" font-weight="bold">PSG</text></svg>
           <span class="ncat">Champions</span>
         </div>
-        <div class="nbody">
-          <div class="ntitle">Pacho anticipa "duelo de alto voltaje": PSG recibe hoy al Bayern en el Parque de los Príncipes por las semifinales de Champions</div>
-          <div class="nmeta">27 Abr 2026 · Expreso / Extra</div>
-        </div>
+        <div class="nbody"><div class="ntitle">Pacho anticipa "duelo de alto voltaje": PSG recibe hoy al Bayern en el Parque de los Príncipes por las semifinales de Champions</div><div class="nmeta">27 Abr 2026 · Expreso / Extra</div></div>
       </div>
-      <div class="nc" tabindex="0" aria-label="Barcelona lidera LaLiga con 82 pts, Madrid a 9. 24 Abr 2026">
+      <div class="nc" tabindex="0">
         <div class="nimg" style="background:linear-gradient(135deg,#004D98,#A50044);">
-          <svg width="60" height="60" viewBox="0 0 22 22" aria-hidden="true"><circle cx="11" cy="11" r="10" fill="#004D98"/><text x="11" y="14.5" text-anchor="middle" font-size="7" fill="#fff" font-weight="bold">FCB</text></svg>
+          <svg width="60" height="60" viewBox="0 0 22 22"><circle cx="11" cy="11" r="10" fill="#004D98"/><text x="11" y="14.5" text-anchor="middle" font-size="7" fill="#fff" font-weight="bold">FCB</text></svg>
           <span class="ncat">LaLiga</span>
         </div>
-        <div class="nbody">
-          <div class="ntitle">Barcelona lidera con 82 puntos y podría distanciarse hasta 11 del Madrid. El título de LaLiga está prácticamente sentenciado</div>
-          <div class="nmeta">24 Abr 2026 · Claro Sports / 365Scores</div>
-        </div>
+        <div class="nbody"><div class="ntitle">Barcelona lidera con 82 puntos y podría distanciarse hasta 11 del Madrid. El título de LaLiga está prácticamente sentenciado</div><div class="nmeta">24 Abr 2026 · Claro Sports</div></div>
       </div>
-      <div class="nc" tabindex="0" aria-label="Piero Hincapié en semifinales con Arsenal. Ecuador en los 4 mejores de Champions">
+      <div class="nc" tabindex="0">
         <div class="nimg" style="background:linear-gradient(135deg,#EF0107,#9B0000);">
-          <svg width="60" height="60" viewBox="0 0 22 22" aria-hidden="true"><circle cx="11" cy="11" r="10" fill="#EF0107"/><text x="11" y="14.5" text-anchor="middle" font-size="7" fill="#fff" font-weight="bold">ARS</text></svg>
+          <svg width="60" height="60" viewBox="0 0 22 22"><circle cx="11" cy="11" r="10" fill="#EF0107"/><text x="11" y="14.5" text-anchor="middle" font-size="7" fill="#fff" font-weight="bold">ARS</text></svg>
           <span class="ncat">Ecuador</span>
         </div>
-        <div class="nbody">
-          <div class="ntitle">Dos ecuatorianos en semifinales: Pacho con PSG y Hincapié con Arsenal. La mayor hazaña histórica del fútbol ecuatoriano en Champions</div>
-          <div class="nmeta">15 Abr 2026 · Expreso / El Universo</div>
-        </div>
+        <div class="nbody"><div class="ntitle">Dos ecuatorianos en semifinales: Pacho con PSG y Hincapié con Arsenal. La mayor hazaña histórica del fútbol ecuatoriano en Champions</div><div class="nmeta">15 Abr 2026 · Expreso / El Universo</div></div>
       </div>
-      <div class="nc" tabindex="0" aria-label="Bayern 4-3 Real Madrid. Luis Díaz gol decisivo en el 87'">
+      <div class="nc" tabindex="0">
         <div class="nimg" style="background:linear-gradient(135deg,#DC052D,#7A0016);">
-          <svg width="60" height="60" viewBox="0 0 22 22" aria-hidden="true"><circle cx="11" cy="11" r="10" fill="#DC052D"/><text x="11" y="14.5" text-anchor="middle" font-size="7" fill="#fff" font-weight="bold">FCB</text></svg>
+          <svg width="60" height="60" viewBox="0 0 22 22"><circle cx="11" cy="11" r="10" fill="#DC052D"/><text x="11" y="14.5" text-anchor="middle" font-size="7" fill="#fff" font-weight="bold">FCB</text></svg>
           <span class="ncat">Champions</span>
         </div>
-        <div class="nbody">
-          <div class="ntitle">Bayern eliminó al Real Madrid con gol agónico de Luis Díaz en el 87'. Los blancos quedan sin títulos esta temporada</div>
-          <div class="nmeta">15 Abr 2026 · CNN Español</div>
-        </div>
+        <div class="nbody"><div class="ntitle">Bayern eliminó al Real Madrid con gol agónico de Luis Díaz en el 87'. Los blancos quedan sin títulos esta temporada</div><div class="nmeta">15 Abr 2026 · CNN Español</div></div>
       </div>
     </div>
     <div class="nlist">
-      <div class="nli" tabindex="0" aria-label="LDU Quito arranca Copa Libertadores con 2 victorias">
-        <div class="nlt" style="background:rgba(0,35,102,.4);"><svg viewBox="0 0 22 22"><circle cx="11" cy="11" r="10" fill="#fff" stroke="#002366" stroke-width="2"/><text x="11" y="14.5" text-anchor="middle" font-size="7" fill="#002366" font-weight="bold">LDU</text></svg></div>
-        <div><div class="nli-title">LDU Quito visita a Lanús con 6 puntos en Copa Libertadores 2026. Los albos punteros del Grupo G</div><div class="nli-meta">Copa Libertadores · 27 Abr 2026 · Afición Central</div></div>
-      </div>
-      <div class="nli" tabindex="0" aria-label="Harry Kane: 53 goles en 45 partidos con Bayern en la temporada">
-        <div class="nlt" style="background:rgba(220,5,45,.3);"><svg viewBox="0 0 22 22"><circle cx="11" cy="11" r="10" fill="#DC052D"/><text x="11" y="14.5" text-anchor="middle" font-size="7" fill="#fff" font-weight="bold">FCB</text></svg></div>
-        <div><div class="nli-title">Harry Kane: 53 goles en 45 partidos esta temporada. El inglés 2do goleador de Champions y candidato al Balón de Oro</div><div class="nli-meta">Champions · 27 Abr 2026 · Al Jazeera / CNN</div></div>
-      </div>
-      <div class="nli" tabindex="0" aria-label="Real Madrid sin Champions: Álvaro Arbeloa lleva al equipo a buscar el subcampeonato de LaLiga">
-        <div class="nlt" style="background:rgba(0,82,159,.25);"><svg viewBox="0 0 22 22"><circle cx="11" cy="11" r="10" fill="#fff" stroke="#bbb" stroke-width="1"/><text x="11" y="14.5" text-anchor="middle" font-size="7" fill="#00529F" font-weight="bold">RMA</text></svg></div>
-        <div><div class="nli-title">Real Madrid, sin Champions ni Copa: el equipo de Arbeloa solo pelea por el subcampeonato de LaLiga</div><div class="nli-meta">LaLiga · 16 Abr 2026 · CNN Español</div></div>
-      </div>
-      <div class="nli" tabindex="0" aria-label="PSG campeón de Champions 2025: Willian Pacho, primer ecuatoriano en levantar la orejona">
-        <div class="nlt" style="background:rgba(0,61,131,.3);"><svg viewBox="0 0 22 22"><circle cx="11" cy="11" r="10" fill="#003D83"/><circle cx="11" cy="11" r="6" fill="#fff"/><text x="11" y="14.5" text-anchor="middle" font-size="7" fill="#003D83" font-weight="bold">PSG</text></svg></div>
-        <div><div class="nli-title">Willian Pacho: el primer ecuatoriano en ganar la Champions League (2025). PSG goleó 5-0 al Inter en la final del Allianz Arena</div><div class="nli-meta">Ecuador · Historia · Jun 2025 · Ecuraices</div></div>
-      </div>
+      <div class="nli" tabindex="0"><div class="nlt" style="background:rgba(0,35,102,.4);"><svg viewBox="0 0 22 22"><circle cx="11" cy="11" r="10" fill="#fff" stroke="#002366" stroke-width="2"/><text x="11" y="14.5" text-anchor="middle" font-size="7" fill="#002366" font-weight="bold">LDU</text></svg></div><div><div class="nli-title">LDU Quito visita a Lanús con 6 puntos en Copa Libertadores 2026. Los albos punteros del Grupo G</div><div class="nli-meta">Copa Libertadores · 27 Abr 2026 · Afición Central</div></div></div>
+      <div class="nli" tabindex="0"><div class="nlt" style="background:rgba(220,5,45,.3);"><svg viewBox="0 0 22 22"><circle cx="11" cy="11" r="10" fill="#DC052D"/><text x="11" y="14.5" text-anchor="middle" font-size="7" fill="#fff" font-weight="bold">FCB</text></svg></div><div><div class="nli-title">Harry Kane: 53 goles en 45 partidos esta temporada. El inglés 2do goleador de Champions y candidato al Balón de Oro</div><div class="nli-meta">Champions · 27 Abr 2026 · Al Jazeera / CNN</div></div></div>
+      <div class="nli" tabindex="0"><div class="nlt" style="background:rgba(0,61,131,.3);"><svg viewBox="0 0 22 22"><circle cx="11" cy="11" r="10" fill="#003D83"/><circle cx="11" cy="11" r="6" fill="#fff"/><text x="11" y="14.5" text-anchor="middle" font-size="7" fill="#003D83" font-weight="bold">PSG</text></svg></div><div><div class="nli-title">Willian Pacho: el primer ecuatoriano en ganar la Champions League (2025). PSG goleó 5-0 al Inter en la final del Allianz Arena</div><div class="nli-meta">Ecuador · Historia · Jun 2025 · Ecuraices</div></div></div>
     </div>
   </div>
 
   <div id="np-ec" class="tp" role="tabpanel">
     <div class="nlist">
-      <div class="nli" tabindex="0"><div class="nlt" style="background:rgba(0,61,131,.3);"><svg viewBox="0 0 22 22"><circle cx="11" cy="11" r="10" fill="#003D83"/><circle cx="11" cy="11" r="6" fill="#fff"/><text x="11" y="14.5" text-anchor="middle" font-size="7" fill="#003D83" font-weight="bold">PSG</text></svg></div><div><div class="nli-title">Willian Pacho jugará su 2ª semifinal de Champions con PSG. "Será una llave complicada, Bayern viene muy bien", dijo el defensa de Quinindé</div><div class="nli-meta">27 Abr 2026 · El Universo / Expreso</div></div></div>
-      <div class="nli" tabindex="0"><div class="nlt" style="background:rgba(239,1,7,.3);"><svg viewBox="0 0 22 22"><circle cx="11" cy="11" r="10" fill="#EF0107"/><text x="11" y="14.5" text-anchor="middle" font-size="7" fill="#fff" font-weight="bold">ARS</text></svg></div><div><div class="nli-title">Piero Hincapié en semifinales de Champions con Arsenal ante Atlético de Madrid. Ecuador con dos jugadores en las mejores 4 del mundo</div><div class="nli-meta">27 Abr 2026 · Expreso</div></div></div>
-      <div class="nli" tabindex="0"><div class="nlt" style="background:rgba(0,35,102,.4);"><svg viewBox="0 0 22 22"><circle cx="11" cy="11" r="10" fill="#fff" stroke="#002366" stroke-width="2"/><text x="11" y="14.5" text-anchor="middle" font-size="7" fill="#002366" font-weight="bold">LDU</text></svg></div><div><div class="nli-title">LDU Quito visita a Lanús hoy a las 17:00 EC con liderato del Grupo G de la Copa Libertadores. El equipo de Nunes va por el pleno de 9 pts</div><div class="nli-meta">27 Abr 2026 · Afición Central</div></div></div>
-      <div class="nli" tabindex="0"><div class="nlt" style="background:rgba(0,61,131,.3);"><svg viewBox="0 0 22 22"><circle cx="11" cy="11" r="10" fill="#003D83"/><circle cx="11" cy="11" r="6" fill="#fff"/><text x="11" y="14.5" text-anchor="middle" font-size="7" fill="#003D83" font-weight="bold">PSG</text></svg></div><div><div class="nli-title">Willian Pacho: primer ecuatoriano campeón de la Champions League (PSG 5-0 Inter, Jun 2025). También ganó la Supercopa UEFA en agosto</div><div class="nli-meta">Historia Ecuador · Jun 2025 · Ecuraices / Wikipedia</div></div></div>
+      <div class="nli" tabindex="0"><div class="nlt" style="background:rgba(0,61,131,.3);"><svg viewBox="0 0 22 22"><circle cx="11" cy="11" r="10" fill="#003D83"/><circle cx="11" cy="11" r="6" fill="#fff"/><text x="11" y="14.5" text-anchor="middle" font-size="7" fill="#003D83" font-weight="bold">PSG</text></svg></div><div><div class="nli-title">Willian Pacho jugará su 2ª semifinal de Champions con PSG. "Será una llave complicada, Bayern viene muy bien"</div><div class="nli-meta">27 Abr 2026 · El Universo / Expreso</div></div></div>
+      <div class="nli" tabindex="0"><div class="nlt" style="background:rgba(239,1,7,.3);"><svg viewBox="0 0 22 22"><circle cx="11" cy="11" r="10" fill="#EF0107"/><text x="11" y="14.5" text-anchor="middle" font-size="7" fill="#fff" font-weight="bold">ARS</text></svg></div><div><div class="nli-title">Piero Hincapié en semifinales de Champions con Arsenal ante Atlético de Madrid. Ecuador con dos jugadores en los mejores 4 del mundo</div><div class="nli-meta">27 Abr 2026 · Expreso</div></div></div>
+      <div class="nli" tabindex="0"><div class="nlt" style="background:rgba(0,35,102,.4);"><svg viewBox="0 0 22 22"><circle cx="11" cy="11" r="10" fill="#fff" stroke="#002366" stroke-width="2"/><text x="11" y="14.5" text-anchor="middle" font-size="7" fill="#002366" font-weight="bold">LDU</text></svg></div><div><div class="nli-title">LDU Quito visita a Lanús hoy a las 17:00 EC con liderato del Grupo G de la Copa Libertadores</div><div class="nli-meta">27 Abr 2026 · Afición Central</div></div></div>
     </div>
   </div>
 
   <div id="np-ucl" class="tp" role="tabpanel">
     <div class="nlist">
-      <div class="nli" tabindex="0"><div class="nlt" style="background:rgba(7,29,73,.6);"><svg viewBox="0 0 22 22"><rect width="22" height="22" rx="3" fill="#071D49"/><text x="11" y="16" text-anchor="middle" font-size="13" fill="#00E0FF">★</text></svg></div><div><div class="nli-title">Semifinales Champions 2026: PSG-Bayern (hoy) y Atlético-Arsenal (mié). PSG campeón defensor; Bayern campeón Bundesliga. Polvora garantizada</div><div class="nli-meta">27 Abr 2026 · UEFA / CNN / Semana</div></div></div>
-      <div class="nli" tabindex="0"><div class="nlt" style="background:rgba(220,5,45,.3);"><svg viewBox="0 0 22 22"><circle cx="11" cy="11" r="10" fill="#DC052D"/><text x="11" y="14.5" text-anchor="middle" font-size="7" fill="#fff" font-weight="bold">FCB</text></svg></div><div><div class="nli-title">Harry Kane llega como 2do goleador de la Champions con 12 goles. El inglés quiere superar al líder de la tabla de artillería y llegar a Budapest</div><div class="nli-meta">27 Abr 2026 · Al Jazeera / ESPN</div></div></div>
-      <div class="nli" tabindex="0"><div class="nlt" style="background:rgba(0,61,131,.3);"><svg viewBox="0 0 22 22"><circle cx="11" cy="11" r="10" fill="#003D83"/><circle cx="11" cy="11" r="6" fill="#fff"/><text x="11" y="14.5" text-anchor="middle" font-size="7" fill="#003D83" font-weight="bold">PSG</text></svg></div><div><div class="nli-title">PSG de Pacho eliminó al Liverpool en cuartos (4-0 global) y al Arsenal en la semifinal 2024-25. Luis Enrique apunta al bicampeonato</div><div class="nli-meta">Champions 2026 · UEFA</div></div></div>
+      <div class="nli" tabindex="0"><div class="nlt" style="background:rgba(7,29,73,.6);"><svg viewBox="0 0 22 22"><rect width="22" height="22" rx="3" fill="#071D49"/><text x="11" y="16" text-anchor="middle" font-size="13" fill="#00E0FF">★</text></svg></div><div><div class="nli-title">Semifinales Champions 2026: PSG-Bayern (hoy) y Atlético-Arsenal (mié). Pólvora garantizada</div><div class="nli-meta">27 Abr 2026 · UEFA / CNN / Semana</div></div></div>
+      <div class="nli" tabindex="0"><div class="nlt" style="background:rgba(220,5,45,.3);"><svg viewBox="0 0 22 22"><circle cx="11" cy="11" r="10" fill="#DC052D"/><text x="11" y="14.5" text-anchor="middle" font-size="7" fill="#fff" font-weight="bold">FCB</text></svg></div><div><div class="nli-title">Harry Kane llega como 2do goleador de la Champions con 12 goles. El inglés quiere superar la tabla de artillería</div><div class="nli-meta">27 Abr 2026 · Al Jazeera / ESPN</div></div></div>
       <div class="nli" tabindex="0"><div class="nlt" style="background:rgba(220,5,45,.3);"><svg viewBox="0 0 22 22"><circle cx="11" cy="11" r="10" fill="#DC052D"/><text x="11" y="14.5" text-anchor="middle" font-size="7" fill="#fff" font-weight="bold">FCB</text></svg></div><div><div class="nli-title">Bayern venció 4-3 al Real Madrid en el Allianz Arena. Gol de Luis Díaz en el 87' tras la expulsión de Camavinga. Global 6-4</div><div class="nli-meta">15 Abr 2026 · CNN Español</div></div></div>
     </div>
   </div>
 
   <div id="np-ll" class="tp" role="tabpanel">
     <div class="nlist">
-      <div class="nli" tabindex="0"><div class="nlt" style="background:rgba(0,77,152,.3);"><svg viewBox="0 0 22 22"><circle cx="11" cy="11" r="10" fill="#004D98"/><text x="11" y="14.5" text-anchor="middle" font-size="7" fill="#fff" font-weight="bold">FCB</text></svg></div><div><div class="nli-title">Barcelona lidera LaLiga con 82 puntos. Ganó al Getafe y podría ampliar a 11 su ventaja sobre el Real Madrid. El título está casi sentenciado</div><div class="nli-meta">24–26 Abr 2026 · Claro Sports / 365Scores</div></div></div>
+      <div class="nli" tabindex="0"><div class="nlt" style="background:rgba(0,77,152,.3);"><svg viewBox="0 0 22 22"><circle cx="11" cy="11" r="10" fill="#004D98"/><text x="11" y="14.5" text-anchor="middle" font-size="7" fill="#fff" font-weight="bold">FCB</text></svg></div><div><div class="nli-title">Barcelona lidera LaLiga con 82 puntos. Ganó al Getafe y podría ampliar a 11 su ventaja sobre el Real Madrid</div><div class="nli-meta">24–26 Abr 2026 · Claro Sports / 365Scores</div></div></div>
       <div class="nli" tabindex="0"><div class="nlt" style="background:rgba(0,82,159,.25);"><svg viewBox="0 0 22 22"><circle cx="11" cy="11" r="10" fill="#fff" stroke="#bbb" stroke-width="1"/><text x="11" y="14.5" text-anchor="middle" font-size="7" fill="#00529F" font-weight="bold">RMA</text></svg></div><div><div class="nli-title">Real Madrid 0-1 Betis. El equipo de Arbeloa cede puntos de oro y queda matemáticamente muy lejos del título de LaLiga 2026</div><div class="nli-meta">24 Abr 2026 · Futbolred / La Prensa HN</div></div></div>
     </div>
   </div>
@@ -575,73 +618,39 @@ footer{background:#0d0f14;border-top:1px solid var(--bdr);padding:18px 24px;text
   <div class="shdr"><h1 class="stitle">Próximos Partidos</h1><span style="font-size:11px;color:var(--t3);">Semana 27 Abr – 6 May 2026</span></div>
 
   <div class="fcard">
-    <div class="flg"><svg viewBox="0 0 22 22" aria-hidden="true"><rect width="22" height="22" rx="3" fill="#071D49"/><text x="11" y="16" text-anchor="middle" font-size="13" fill="#00E0FF">★</text></svg><span class="flgn">UEFA Champions League — Semifinales Ida</span></div>
-    <div class="fmatch" tabindex="0" role="button" aria-label="PSG vs Bayern Munich, hoy 27 abril 14:00 Ecuador, Parque de los Príncipes, ESPN Disney+" onclick="toast('PSG vs Bayern — HOY 14:00 EC · ESPN / Disney+')">
-      <div class="fteam l">
-        <svg class="ftico" viewBox="0 0 22 22" aria-label="PSG"><circle cx="11" cy="11" r="10" fill="#003D83"/><circle cx="11" cy="11" r="6" fill="#fff"/><text x="11" y="14.5" text-anchor="middle" font-size="7" fill="#003D83" font-weight="bold">PSG</text></svg>
-        <div class="ftn">Paris SG</div>
-      </div>
-      <div class="fcenter">
-        <div class="ftime">14:00 EC</div>
-        <div class="fdate">Mar 28 Abr</div>
-        <div class="ftv">ESPN/Disney+</div>
-      </div>
-      <div class="fteam">
-        <svg class="ftico" viewBox="0 0 22 22" aria-label="Bayern Munich"><circle cx="11" cy="11" r="10" fill="#DC052D"/><text x="11" y="14.5" text-anchor="middle" font-size="7" fill="#fff" font-weight="bold">FCB</text></svg>
-        <div class="ftn">Bayern</div>
-      </div>
+    <div class="flg"><svg viewBox="0 0 22 22" style="width:20px;height:20px;"><rect width="22" height="22" rx="3" fill="#071D49"/><text x="11" y="16" text-anchor="middle" font-size="13" fill="#00E0FF">★</text></svg><span class="flgn">UEFA Champions League — Semifinales Ida</span></div>
+    <div class="fmatch" tabindex="0" role="button" onclick="toast('PSG vs Bayern — HOY 14:00 EC · ESPN / Disney+')">
+      <div class="fteam l"><svg class="ftico" viewBox="0 0 22 22"><circle cx="11" cy="11" r="10" fill="#003D83"/><circle cx="11" cy="11" r="6" fill="#fff"/><text x="11" y="14.5" text-anchor="middle" font-size="7" fill="#003D83" font-weight="bold">PSG</text></svg><div class="ftn">Paris SG</div></div>
+      <div class="fcenter"><div class="ftime">14:00 EC</div><div class="fdate">Mar 28 Abr</div><div class="ftv">ESPN/Disney+</div></div>
+      <div class="fteam"><svg class="ftico" viewBox="0 0 22 22"><circle cx="11" cy="11" r="10" fill="#DC052D"/><text x="11" y="14.5" text-anchor="middle" font-size="7" fill="#fff" font-weight="bold">FCB</text></svg><div class="ftn">Bayern</div></div>
     </div>
-    <div class="fmatch" tabindex="0" role="button" aria-label="Atlético de Madrid vs Arsenal, miércoles 29 abril 14:00 Ecuador, Metropolitano" onclick="toast('Atlético vs Arsenal — Mié 29 Abr 14:00 EC · ESPN')">
-      <div class="fteam l">
-        <svg class="ftico" viewBox="0 0 22 22" aria-label="Atlético de Madrid"><circle cx="11" cy="11" r="10" fill="#CC0000"/><text x="11" y="14.5" text-anchor="middle" font-size="7" fill="#fff" font-weight="bold">ATM</text></svg>
-        <div class="ftn">Atlético</div>
-      </div>
+    <div class="fmatch" tabindex="0" role="button" onclick="toast('Atlético vs Arsenal — Mié 29 Abr 14:00 EC · ESPN')">
+      <div class="fteam l"><svg class="ftico" viewBox="0 0 22 22"><circle cx="11" cy="11" r="10" fill="#CC0000"/><text x="11" y="14.5" text-anchor="middle" font-size="7" fill="#fff" font-weight="bold">ATM</text></svg><div class="ftn">Atlético</div></div>
       <div class="fcenter"><div class="ftime">14:00 EC</div><div class="fdate">Mié 29 Abr</div><div class="ftv">ESPN/Disney+</div></div>
-      <div class="fteam">
-        <svg class="ftico" viewBox="0 0 22 22" aria-label="Arsenal"><circle cx="11" cy="11" r="10" fill="#EF0107"/><text x="11" y="14.5" text-anchor="middle" font-size="7" fill="#fff" font-weight="bold">ARS</text></svg>
-        <div class="ftn">Arsenal</div>
-      </div>
+      <div class="fteam"><svg class="ftico" viewBox="0 0 22 22"><circle cx="11" cy="11" r="10" fill="#EF0107"/><text x="11" y="14.5" text-anchor="middle" font-size="7" fill="#fff" font-weight="bold">ARS</text></svg><div class="ftn">Arsenal</div></div>
     </div>
-    <div class="fmatch" tabindex="0" role="button" aria-label="PSG vs Bayern Munich vuelta, miércoles 6 mayo, Allianz Arena" onclick="toast('PSG vs Bayern — Vuelta · Mié 6 May · Allianz Arena')">
-      <div class="fteam l">
-        <svg class="ftico" viewBox="0 0 22 22" aria-label="Bayern Munich"><circle cx="11" cy="11" r="10" fill="#DC052D"/><text x="11" y="14.5" text-anchor="middle" font-size="7" fill="#fff" font-weight="bold">FCB</text></svg>
-        <div class="ftn">Bayern</div>
-      </div>
-      <div class="fcenter"><div class="ftime">14:00 EC</div><div class="fdate">Mié 6 May (Vuelta)</div><div class="ftv">ESPN</div></div>
-      <div class="fteam">
-        <svg class="ftico" viewBox="0 0 22 22" aria-label="PSG"><circle cx="11" cy="11" r="10" fill="#003D83"/><circle cx="11" cy="11" r="6" fill="#fff"/><text x="11" y="14.5" text-anchor="middle" font-size="7" fill="#003D83" font-weight="bold">PSG</text></svg>
-        <div class="ftn">Paris SG</div>
-      </div>
+    <div class="fmatch" tabindex="0" role="button" onclick="toast('PSG vs Bayern — Vuelta · Mié 6 May · Allianz Arena')">
+      <div class="fteam l"><svg class="ftico" viewBox="0 0 22 22"><circle cx="11" cy="11" r="10" fill="#DC052D"/><text x="11" y="14.5" text-anchor="middle" font-size="7" fill="#fff" font-weight="bold">FCB</text></svg><div class="ftn">Bayern</div></div>
+      <div class="fcenter"><div class="ftime">14:00 EC</div><div class="fdate">Mié 6 May</div><div class="ftv">ESPN</div></div>
+      <div class="fteam"><svg class="ftico" viewBox="0 0 22 22"><circle cx="11" cy="11" r="10" fill="#003D83"/><circle cx="11" cy="11" r="6" fill="#fff"/><text x="11" y="14.5" text-anchor="middle" font-size="7" fill="#003D83" font-weight="bold">PSG</text></svg><div class="ftn">Paris SG</div></div>
     </div>
   </div>
 
   <div class="fcard">
-    <div class="flg"><svg viewBox="0 0 22 22" aria-hidden="true"><rect width="22" height="22" rx="3" fill="#C60B1E"/><rect y="7" width="22" height="8" fill="#FFC400"/></svg><span class="flgn">LaLiga EA Sports — Jornada 34</span></div>
-    <div class="fmatch" tabindex="0" role="button" aria-label="FC Barcelona, partido pendiente vs Getafe" onclick="toast('FC Barcelona vs Getafe — Pte. · LaLiga')">
-      <div class="fteam l"><svg class="ftico" viewBox="0 0 22 22" aria-label="FC Barcelona"><circle cx="11" cy="11" r="10" fill="#004D98"/><text x="11" y="14.5" text-anchor="middle" font-size="7" fill="#fff" font-weight="bold">FCB</text></svg><div class="ftn">Barcelona</div></div>
+    <div class="flg"><svg viewBox="0 0 22 22" style="width:20px;height:20px;"><rect width="22" height="22" rx="3" fill="#C60B1E"/><rect y="7" width="22" height="8" fill="#FFC400"/></svg><span class="flgn">LaLiga EA Sports — Jornada 34</span></div>
+    <div class="fmatch" tabindex="0" role="button" onclick="toast('FC Barcelona vs Real Madrid — Pte. · LaLiga')">
+      <div class="fteam l"><svg class="ftico" viewBox="0 0 22 22"><circle cx="11" cy="11" r="10" fill="#004D98"/><text x="11" y="14.5" text-anchor="middle" font-size="7" fill="#fff" font-weight="bold">FCB</text></svg><div class="ftn">Barcelona</div></div>
       <div class="fcenter"><div class="ftime">Pte.</div><div class="fdate">Jornada 34</div><div class="ftv">ESPN</div></div>
-      <div class="fteam"><svg class="ftico" viewBox="0 0 22 22" aria-label="Real Madrid"><circle cx="11" cy="11" r="10" fill="#fff" stroke="#bbb" stroke-width="1"/><text x="11" y="14.5" text-anchor="middle" font-size="7" fill="#00529F" font-weight="bold">RMA</text></svg><div class="ftn">Real Madrid</div></div>
+      <div class="fteam"><svg class="ftico" viewBox="0 0 22 22"><circle cx="11" cy="11" r="10" fill="#fff" stroke="#bbb" stroke-width="1"/><text x="11" y="14.5" text-anchor="middle" font-size="7" fill="#00529F" font-weight="bold">RMA</text></svg><div class="ftn">Real Madrid</div></div>
     </div>
   </div>
 
   <div class="fcard">
-    <div class="flg"><svg viewBox="0 0 22 22" aria-hidden="true"><rect width="22" height="22" rx="3" fill="#F5A800"/><text x="11" y="15" text-anchor="middle" font-size="9" fill="#000" font-weight="bold">LIBT</text></svg><span class="flgn">Copa Libertadores 2026 — Grupo G · Jornada 3</span></div>
-    <div class="fmatch" tabindex="0" role="button" aria-label="LDU Quito vs Lanús, hoy 17:00 Ecuador, Copa Libertadores" onclick="toast('LDU Quito vs Lanús — HOY 17:00 EC')">
-      <div class="fteam l"><svg class="ftico" viewBox="0 0 22 22" aria-label="LDU Quito"><circle cx="11" cy="11" r="10" fill="#fff" stroke="#002366" stroke-width="2"/><text x="11" y="14.5" text-anchor="middle" font-size="7" fill="#002366" font-weight="bold">LDU</text></svg><div class="ftn">LDU Quito</div></div>
+    <div class="flg"><svg viewBox="0 0 22 22" style="width:20px;height:20px;"><rect width="22" height="22" rx="3" fill="#F5A800"/><text x="11" y="15" text-anchor="middle" font-size="9" fill="#000" font-weight="bold">LIBT</text></svg><span class="flgn">Copa Libertadores 2026 — Grupo G · Jornada 3</span></div>
+    <div class="fmatch" tabindex="0" role="button" onclick="toast('LDU Quito vs Lanús — HOY 17:00 EC')">
+      <div class="fteam l"><svg class="ftico" viewBox="0 0 22 22"><circle cx="11" cy="11" r="10" fill="#fff" stroke="#002366" stroke-width="2"/><text x="11" y="14.5" text-anchor="middle" font-size="7" fill="#002366" font-weight="bold">LDU</text></svg><div class="ftn">LDU Quito</div></div>
       <div class="fcenter"><div class="ftime">17:00 EC</div><div class="fdate">Mar 28 Abr</div><div class="ftv">ESPN</div></div>
-      <div class="fteam"><svg class="ftico" viewBox="0 0 22 22" aria-label="Lanús Argentina"><circle cx="11" cy="11" r="10" fill="#CC0000"/><text x="11" y="14.5" text-anchor="middle" font-size="7" fill="#fff" font-weight="bold">LAN</text></svg><div class="ftn">Lanús</div></div>
-    </div>
-  </div>
-
-  <div class="fcard">
-    <div class="flg" style="background:rgba(255,216,77,.06);border-color:rgba(255,216,77,.15);">
-      <svg viewBox="0 0 22 22" aria-hidden="true"><circle cx="11" cy="11" r="10" fill="#FFE000" stroke="#222" stroke-width="1"/><text x="11" y="15.5" text-anchor="middle" font-size="8" fill="#222" font-weight="bold">La Tri</text></svg>
-      <span class="flgn" style="color:var(--yel);">FA Cup — Final</span>
-    </div>
-    <div class="fmatch" tabindex="0" role="button" aria-label="Chelsea vs Manchester City, final FA Cup, hoy 26 abril" onclick="toast('Chelsea vs Man City — FA Cup Final · Hoy · Disney+/ESPN')">
-      <div class="fteam l"><svg class="ftico" viewBox="0 0 22 22" aria-label="Chelsea"><circle cx="11" cy="11" r="10" fill="#034694"/><text x="11" y="14.5" text-anchor="middle" font-size="7" fill="#fff" font-weight="bold">CHE</text></svg><div class="ftn">Chelsea</div></div>
-      <div class="fcenter"><div class="ftime">Hoy</div><div class="fdate">FA Cup Final</div><div class="ftv">Disney+/ESPN</div></div>
-      <div class="fteam"><svg class="ftico" viewBox="0 0 22 22" aria-label="Manchester City"><circle cx="11" cy="11" r="10" fill="#6CABDD"/><text x="11" y="14.5" text-anchor="middle" font-size="7" fill="#fff" font-weight="bold">MCI</text></svg><div class="ftn">Man City</div></div>
+      <div class="fteam"><svg class="ftico" viewBox="0 0 22 22"><circle cx="11" cy="11" r="10" fill="#CC0000"/><text x="11" y="14.5" text-anchor="middle" font-size="7" fill="#fff" font-weight="bold">LAN</text></svg><div class="ftn">Lanús</div></div>
     </div>
   </div>
 </div>
@@ -672,74 +681,18 @@ footer{background:#0d0f14;border-top:1px solid var(--bdr);padding:18px 24px;text
   </div>
   <div id="ep-ec" class="tp on" role="tabpanel">
     <div class="pgrid">
-      <div class="pcard" tabindex="0" aria-label="Barcelona SC, equipo ecuatoriano">
-        <div class="phead" style="background:linear-gradient(135deg,#FFE000,#c8a800);">
-          <svg width="56" height="56" viewBox="0 0 22 22" aria-label="Barcelona SC"><circle cx="11" cy="11" r="10" fill="#FFE000" stroke="#222" stroke-width="1"/><text x="11" y="15.5" text-anchor="middle" font-size="8" fill="#222" font-weight="bold">BSC</text></svg>
-          <span class="ppos">Ecuador</span>
-        </div>
-        <div class="pbody">
-          <div class="pname">Barcelona SC</div>
-          <div class="pclub">Guayaquil · Fundado 1925</div>
-          <div class="pstats">
-            <div class="pst"><div class="pstn">17</div><div class="pstl">Títulos LigaPro</div></div>
-            <div class="pst"><div class="pstn">1</div><div class="pstl">Recopa 2020</div></div>
-            <div class="pst"><div class="pstn">Cap. 59k</div><div class="pstl">Estadio</div></div>
-          </div>
-        </div>
-      </div>
-      <div class="pcard" tabindex="0" aria-label="LDU Quito, equipo ecuatoriano">
-        <div class="phead" style="background:linear-gradient(135deg,#002366,#003d99);">
-          <svg width="56" height="56" viewBox="0 0 22 22" aria-label="LDU Quito"><circle cx="11" cy="11" r="10" fill="#fff" stroke="#002366" stroke-width="2"/><text x="11" y="14.5" text-anchor="middle" font-size="7" fill="#002366" font-weight="bold">LDU</text></svg>
-          <span class="ppos">Ecuador</span>
-        </div>
-        <div class="pbody">
-          <div class="pname">LDU Quito</div>
-          <div class="pclub">Quito · Fundado 1930</div>
-          <div class="pstats">
-            <div class="pst"><div class="pstn">11</div><div class="pstl">Títulos LigaPro</div></div>
-            <div class="pst"><div class="pstn">1</div><div class="pstl">Copa Libertadores 2008</div></div>
-            <div class="pst"><div class="pstn">Grupo G</div><div class="pstl">Copa Libertadores 2026</div></div>
-          </div>
-        </div>
-      </div>
-      <div class="pcard" tabindex="0" aria-label="Independiente del Valle, equipo ecuatoriano">
-        <div class="phead" style="background:linear-gradient(135deg,#CC0000,#990000);">
-          <svg width="56" height="56" viewBox="0 0 22 22" aria-label="Independiente del Valle"><circle cx="11" cy="11" r="10" fill="#CC0000"/><text x="11" y="14.5" text-anchor="middle" font-size="7" fill="#fff" font-weight="bold">IDV</text></svg>
-          <span class="ppos">Ecuador</span>
-        </div>
-        <div class="pbody">
-          <div class="pname">Independiente del Valle</div>
-          <div class="pclub">Sangolquí · Fundado 1958</div>
-          <div class="pstats">
-            <div class="pst"><div class="pstn">2</div><div class="pstl">Títulos LigaPro</div></div>
-            <div class="pst"><div class="pstn">1</div><div class="pstl">Copa Sudamericana 2019</div></div>
-            <div class="pst"><div class="pstn">Formativo</div><div class="pstl">Academia Ecuador</div></div>
-          </div>
-        </div>
-      </div>
-      <div class="pcard" tabindex="0" aria-label="Emelec, equipo ecuatoriano">
-        <div class="phead" style="background:linear-gradient(135deg,#003DA5,#0056CC);">
-          <svg width="56" height="56" viewBox="0 0 22 22" aria-label="Emelec"><circle cx="11" cy="11" r="10" fill="#003DA5"/><text x="11" y="14.5" text-anchor="middle" font-size="7" fill="#fff" font-weight="bold">EME</text></svg>
-          <span class="ppos">Ecuador</span>
-        </div>
-        <div class="pbody">
-          <div class="pname">Emelec</div>
-          <div class="pclub">Guayaquil · Fundado 1929</div>
-          <div class="pstats">
-            <div class="pst"><div class="pstn">14</div><div class="pstl">Títulos LigaPro</div></div>
-            <div class="pst"><div class="pstn">L. Fragozo</div><div class="pstl">Joven histórico (16 años)</div></div>
-            <div class="pst"><div class="pstn">Clásico</div><div class="pstl">vs Barcelona SC</div></div>
-          </div>
-        </div>
-      </div>
+      <div class="pcard" tabindex="0"><div class="phead" style="background:linear-gradient(135deg,#FFE000,#c8a800);"><svg width="56" height="56" viewBox="0 0 22 22"><circle cx="11" cy="11" r="10" fill="#FFE000" stroke="#222" stroke-width="1"/><text x="11" y="15.5" text-anchor="middle" font-size="8" fill="#222" font-weight="bold">BSC</text></svg><span class="ppos">Ecuador</span></div><div class="pbody"><div class="pname">Barcelona SC</div><div class="pclub">Guayaquil · Fundado 1925</div><div class="pstats"><div class="pst"><div class="pstn">17</div><div class="pstl">Títulos LigaPro</div></div><div class="pst"><div class="pstn">1</div><div class="pstl">Recopa 2020</div></div><div class="pst"><div class="pstn">59k</div><div class="pstl">Cap. Estadio</div></div></div></div></div>
+      <div class="pcard" tabindex="0"><div class="phead" style="background:linear-gradient(135deg,#002366,#003d99);"><svg width="56" height="56" viewBox="0 0 22 22"><circle cx="11" cy="11" r="10" fill="#fff" stroke="#002366" stroke-width="2"/><text x="11" y="14.5" text-anchor="middle" font-size="7" fill="#002366" font-weight="bold">LDU</text></svg><span class="ppos">Ecuador</span></div><div class="pbody"><div class="pname">LDU Quito</div><div class="pclub">Quito · Fundado 1930</div><div class="pstats"><div class="pst"><div class="pstn">11</div><div class="pstl">Títulos LigaPro</div></div><div class="pst"><div class="pstn">1</div><div class="pstl">Copa Lib. 2008</div></div><div class="pst"><div class="pstn">Grupo G</div><div class="pstl">Copa Lib. 2026</div></div></div></div></div>
+      <div class="pcard" tabindex="0"><div class="phead" style="background:linear-gradient(135deg,#CC0000,#990000);"><svg width="56" height="56" viewBox="0 0 22 22"><circle cx="11" cy="11" r="10" fill="#CC0000"/><text x="11" y="14.5" text-anchor="middle" font-size="7" fill="#fff" font-weight="bold">IDV</text></svg><span class="ppos">Ecuador</span></div><div class="pbody"><div class="pname">Independiente del Valle</div><div class="pclub">Sangolquí · Fundado 1958</div><div class="pstats"><div class="pst"><div class="pstn">2</div><div class="pstl">Títulos LigaPro</div></div><div class="pst"><div class="pstn">1</div><div class="pstl">Copa Sud. 2019</div></div><div class="pst"><div class="pstn">Academia</div><div class="pstl">Ecuador</div></div></div></div></div>
+      <div class="pcard" tabindex="0"><div class="phead" style="background:linear-gradient(135deg,#003DA5,#0056CC);"><svg width="56" height="56" viewBox="0 0 22 22"><circle cx="11" cy="11" r="10" fill="#003DA5"/><text x="11" y="14.5" text-anchor="middle" font-size="7" fill="#fff" font-weight="bold">EME</text></svg><span class="ppos">Ecuador</span></div><div class="pbody"><div class="pname">Emelec</div><div class="pclub">Guayaquil · Fundado 1929</div><div class="pstats"><div class="pst"><div class="pstn">14</div><div class="pstl">Títulos LigaPro</div></div><div class="pst"><div class="pstn">Clásico</div><div class="pstl">vs Barcelona SC</div></div><div class="pst"><div class="pstn">GYE</div><div class="pstl">Guayaquil</div></div></div></div></div>
     </div>
   </div>
   <div id="ep-eu" class="tp" role="tabpanel">
     <div class="pgrid">
-      <div class="pcard" tabindex="0" aria-label="Paris Saint-Germain, equipo francés, campeón Champions 2025"><div class="phead" style="background:linear-gradient(135deg,#003D83,#001f5e);"><svg width="56" height="56" viewBox="0 0 22 22" aria-label="PSG"><circle cx="11" cy="11" r="10" fill="#003D83"/><circle cx="11" cy="11" r="6" fill="#fff"/><text x="11" y="14.5" text-anchor="middle" font-size="7" fill="#003D83" font-weight="bold">PSG</text></svg><span class="ppos">Francia</span></div><div class="pbody"><div class="pname">Paris Saint-Germain</div><div class="pclub">París · Campeón Champions 2025</div><div class="pstats"><div class="pst"><div class="pstn">1</div><div class="pstl">Champions 2025</div></div><div class="pst"><div class="pstn">12</div><div class="pstl">Ligue 1</div></div><div class="pst"><div class="pstn">Pacho</div><div class="pstl">Defensa Ecuador</div></div></div></div></div>
-      <div class="pcard" tabindex="0" aria-label="Bayern München, equipo alemán, campeón Bundesliga 2026"><div class="phead" style="background:linear-gradient(135deg,#DC052D,#8B0019);"><svg width="56" height="56" viewBox="0 0 22 22" aria-label="Bayern"><circle cx="11" cy="11" r="10" fill="#DC052D"/><text x="11" y="14.5" text-anchor="middle" font-size="7" fill="#fff" font-weight="bold">FCB</text></svg><span class="ppos">Alemania</span></div><div class="pbody"><div class="pname">Bayern München</div><div class="pclub">Múnich · Campeón Bundesliga 2026</div><div class="pstats"><div class="pst"><div class="pstn">6</div><div class="pstl">Champions</div></div><div class="pst"><div class="pstn">Kane 53G</div><div class="pstl">Esta temporada</div></div><div class="pst"><div class="pstn">Semifinal</div><div class="pstl">Champions 2026</div></div></div></div></div>
-      <div class="pcard" tabindex="0" aria-label="FC Barcelona, equipo español, líder LaLiga 2026"><div class="phead" style="background:linear-gradient(135deg,#004D98,#A50044);"><svg width="56" height="56" viewBox="0 0 22 22" aria-label="FC Barcelona"><circle cx="11" cy="11" r="10" fill="#004D98"/><text x="11" y="14.5" text-anchor="middle" font-size="7" fill="#fff" font-weight="bold">FCB</text></svg><span class="ppos">España</span></div><div class="pbody"><div class="pname">FC Barcelona</div><div class="pclub">Barcelona · 1er LaLiga con 82 pts</div><div class="pstats"><div class="pst"><div class="pstn">28</div><div class="pstl">LaLiga</div></div><div class="pst"><div class="pstn">5</div><div class="pstl">Champions</div></div><div class="pst"><div class="pstn">Lamine</div><div class="pstl">Yamal joya</div></div></div></div></div>
-      <div class="pcard" tabindex="0" aria-label="Arsenal FC, equipo inglés, semifinalista Champions 2026 con Hincapié"><div class="phead" style="background:linear-gradient(135deg,#EF0107,#9B0000);"><svg width="56" height="56" viewBox="0 0 22 22" aria-label="Arsenal"><circle cx="11" cy="11" r="10" fill="#EF0107"/><text x="11" y="14.5" text-anchor="middle" font-size="7" fill="#fff" font-weight="bold">ARS</text></svg><span class="ppos">Inglaterra</span></div><div class="pbody"><div class="pname">Arsenal FC</div><div class="pclub">Londres · Semifinal Champions 2026</div><div class="pstats"><div class="pst"><div class="pstn">13</div><div class="pstl">Premier</div></div><div class="pst"><div class="pstn">Hincapié</div><div class="pstl">Defensa Ecuador</div></div><div class="pst"><div class="pstn">2do</div><div class="pstl">Premier 2026</div></div></div></div></div>
+      <div class="pcard" tabindex="0"><div class="phead" style="background:linear-gradient(135deg,#003D83,#001f5e);"><svg width="56" height="56" viewBox="0 0 22 22"><circle cx="11" cy="11" r="10" fill="#003D83"/><circle cx="11" cy="11" r="6" fill="#fff"/><text x="11" y="14.5" text-anchor="middle" font-size="7" fill="#003D83" font-weight="bold">PSG</text></svg><span class="ppos">Francia</span></div><div class="pbody"><div class="pname">Paris Saint-Germain</div><div class="pclub">París · Campeón Champions 2025</div><div class="pstats"><div class="pst"><div class="pstn">1</div><div class="pstl">Champions 2025</div></div><div class="pst"><div class="pstn">12</div><div class="pstl">Ligue 1</div></div><div class="pst"><div class="pstn">Pacho</div><div class="pstl">Defensa Ecuador</div></div></div></div></div>
+      <div class="pcard" tabindex="0"><div class="phead" style="background:linear-gradient(135deg,#DC052D,#8B0019);"><svg width="56" height="56" viewBox="0 0 22 22"><circle cx="11" cy="11" r="10" fill="#DC052D"/><text x="11" y="14.5" text-anchor="middle" font-size="7" fill="#fff" font-weight="bold">FCB</text></svg><span class="ppos">Alemania</span></div><div class="pbody"><div class="pname">Bayern München</div><div class="pclub">Múnich · Campeón Bundesliga 2026</div><div class="pstats"><div class="pst"><div class="pstn">6</div><div class="pstl">Champions</div></div><div class="pst"><div class="pstn">Kane 53G</div><div class="pstl">Esta temporada</div></div><div class="pst"><div class="pstn">Semifinal</div><div class="pstl">Champions 2026</div></div></div></div></div>
+      <div class="pcard" tabindex="0"><div class="phead" style="background:linear-gradient(135deg,#004D98,#A50044);"><svg width="56" height="56" viewBox="0 0 22 22"><circle cx="11" cy="11" r="10" fill="#004D98"/><text x="11" y="14.5" text-anchor="middle" font-size="7" fill="#fff" font-weight="bold">FCB</text></svg><span class="ppos">España</span></div><div class="pbody"><div class="pname">FC Barcelona</div><div class="pclub">Barcelona · 1er LaLiga con 82 pts</div><div class="pstats"><div class="pst"><div class="pstn">28</div><div class="pstl">LaLiga</div></div><div class="pst"><div class="pstn">5</div><div class="pstl">Champions</div></div><div class="pst"><div class="pstn">Lamine</div><div class="pstl">Yamal joya</div></div></div></div></div>
+      <div class="pcard" tabindex="0"><div class="phead" style="background:linear-gradient(135deg,#EF0107,#9B0000);"><svg width="56" height="56" viewBox="0 0 22 22"><circle cx="11" cy="11" r="10" fill="#EF0107"/><text x="11" y="14.5" text-anchor="middle" font-size="7" fill="#fff" font-weight="bold">ARS</text></svg><span class="ppos">Inglaterra</span></div><div class="pbody"><div class="pname">Arsenal FC</div><div class="pclub">Londres · Semifinal Champions 2026</div><div class="pstats"><div class="pst"><div class="pstn">13</div><div class="pstl">Premier</div></div><div class="pst"><div class="pstn">Hincapié</div><div class="pstl">Defensa Ecuador</div></div><div class="pst"><div class="pstn">2do</div><div class="pstl">Premier 2026</div></div></div></div></div>
     </div>
   </div>
 </div>
@@ -753,59 +706,17 @@ footer{background:#0d0f14;border-top:1px solid var(--bdr);padding:18px 24px;text
   </div>
   <div id="jp-ec" class="tp on" role="tabpanel">
     <div class="pgrid">
-      <div class="pcard" tabindex="0" aria-label="Willian Pacho, defensa PSG, primer ecuatoriano campeón de la Champions">
-        <div class="phead" style="background:linear-gradient(135deg,#003D83,#001f5e);">
-          <span style="font-size:50px;">🧱</span><span class="ppos">Defensa</span>
-        </div>
-        <div class="pbody">
-          <div class="pname">Willian Pacho</div>
-          <div class="pclub"><svg viewBox="0 0 14 14" style="width:14px;height:14px;" aria-hidden="true"><circle cx="7" cy="7" r="6" fill="#003D83"/><circle cx="7" cy="7" r="4" fill="#fff"/><text x="7" y="9.5" text-anchor="middle" font-size="4.5" fill="#003D83" font-weight="bold">PSG</text></svg> PSG · 🇪🇨 Quinindé, Ecuador</div>
-          <div class="pstats">
-            <div class="pst"><div class="pstn">24</div><div class="pstl">Edad</div></div>
-            <div class="pst"><div class="pstn">Champions</div><div class="pstl">Campeón 2025</div></div>
-            <div class="pst"><div class="pstn">2ª Semif</div><div class="pstl">Champions 2026</div></div>
-          </div>
-          <p style="font-size:11px;color:var(--t3);margin-top:10px;line-height:1.6;">1er ecuatoriano en ganar la Champions League (2025). Titular fijo en el PSG junto a Marquinhos. También ganó la Supercopa UEFA 2025.</p>
-        </div>
-      </div>
-      <div class="pcard" tabindex="0" aria-label="Piero Hincapié, lateral izquierdo Arsenal, semifinalista Champions 2026">
-        <div class="phead" style="background:linear-gradient(135deg,#EF0107,#9B0000);">
-          <span style="font-size:50px;">🛡</span><span class="ppos">Lateral Izq.</span>
-        </div>
-        <div class="pbody">
-          <div class="pname">Piero Hincapié</div>
-          <div class="pclub"><svg viewBox="0 0 14 14" style="width:14px;height:14px;" aria-hidden="true"><circle cx="7" cy="7" r="6" fill="#EF0107"/><text x="7" y="9.5" text-anchor="middle" font-size="4.5" fill="#fff" font-weight="bold">ARS</text></svg> Arsenal FC · 🇪🇨 Ecuador</div>
-          <div class="pstats">
-            <div class="pst"><div class="pstn">23</div><div class="pstl">Edad</div></div>
-            <div class="pst"><div class="pstn">Semifinal</div><div class="pstl">Champions 2026</div></div>
-            <div class="pst"><div class="pstn">Saliba</div><div class="pstl">Sociedad defensiva</div></div>
-          </div>
-          <p style="font-size:11px;color:var(--t3);margin-top:10px;line-height:1.6;">Consolida su lugar en la élite europea con Arsenal. Junto a Gabriel y Saliba forma la mejor zaga de la Premier League 2026.</p>
-        </div>
-      </div>
-      <div class="pcard" tabindex="0" aria-label="Enner Valencia, capitán de la selección Ecuador">
-        <div class="phead" style="background:linear-gradient(135deg,#FFE000,#c8a800);">
-          <span style="font-size:50px;">⚽</span><span class="ppos">Delantero</span>
-        </div>
-        <div class="pbody">
-          <div class="pname">Enner Valencia</div>
-          <div class="pclub">🇪🇨 Capitán La Tri</div>
-          <div class="pstats">
-            <div class="pst"><div class="pstn">40+</div><div class="pstl">Goles Tri</div></div>
-            <div class="pst"><div class="pstn">Qatar 2022</div><div class="pstl">Inauguró el mundial</div></div>
-            <div class="pst"><div class="pstn">Historial</div><div class="pstl">3 Mundiales</div></div>
-          </div>
-          <p style="font-size:11px;color:var(--t3);margin-top:10px;line-height:1.6;">Máximo goleador histórico de la selección ecuatoriana. Marcó en los tres partidos del grupo en Qatar 2022 e ilusiona de cara al Mundial 2026.</p>
-        </div>
-      </div>
+      <div class="pcard" tabindex="0"><div class="phead" style="background:linear-gradient(135deg,#003D83,#001f5e);"><span style="font-size:50px;">🧱</span><span class="ppos">Defensa</span></div><div class="pbody"><div class="pname">Willian Pacho</div><div class="pclub">PSG · 🇪🇨 Quinindé, Ecuador</div><div class="pstats"><div class="pst"><div class="pstn">24</div><div class="pstl">Edad</div></div><div class="pst"><div class="pstn">Champions</div><div class="pstl">Campeón 2025</div></div><div class="pst"><div class="pstn">2ª Semif</div><div class="pstl">Champions 2026</div></div></div><p style="font-size:11px;color:var(--t3);margin-top:10px;line-height:1.6;">1er ecuatoriano en ganar la Champions League (2025). Titular fijo en el PSG junto a Marquinhos.</p></div></div>
+      <div class="pcard" tabindex="0"><div class="phead" style="background:linear-gradient(135deg,#EF0107,#9B0000);"><span style="font-size:50px;">🛡</span><span class="ppos">Lateral Izq.</span></div><div class="pbody"><div class="pname">Piero Hincapié</div><div class="pclub">Arsenal FC · 🇪🇨 Ecuador</div><div class="pstats"><div class="pst"><div class="pstn">23</div><div class="pstl">Edad</div></div><div class="pst"><div class="pstn">Semifinal</div><div class="pstl">Champions 2026</div></div><div class="pst"><div class="pstn">Premier</div><div class="pstl">Top defensas</div></div></div><p style="font-size:11px;color:var(--t3);margin-top:10px;line-height:1.6;">Consolida su lugar en la élite europea con Arsenal. Forma la mejor zaga de la Premier League 2026.</p></div></div>
+      <div class="pcard" tabindex="0"><div class="phead" style="background:linear-gradient(135deg,#FFE000,#c8a800);"><span style="font-size:50px;">⚽</span><span class="ppos">Delantero</span></div><div class="pbody"><div class="pname">Enner Valencia</div><div class="pclub">🇪🇨 Capitán La Tri</div><div class="pstats"><div class="pst"><div class="pstn">40+</div><div class="pstl">Goles Tri</div></div><div class="pst"><div class="pstn">Qatar 2022</div><div class="pstl">Inauguró el mundial</div></div><div class="pst"><div class="pstn">3</div><div class="pstl">Mundiales</div></div></div><p style="font-size:11px;color:var(--t3);margin-top:10px;line-height:1.6;">Máximo goleador histórico de la selección ecuatoriana. Marcó en los tres partidos del grupo en Qatar 2022.</p></div></div>
     </div>
   </div>
   <div id="jp-mu" class="tp" role="tabpanel">
     <div class="pgrid">
-      <div class="pcard" tabindex="0" aria-label="Harry Kane, delantero Bayern Munich, 53 goles esta temporada"><div class="phead" style="background:linear-gradient(135deg,#DC052D,#7A0016);"><span style="font-size:50px;">🎯</span><span class="ppos">Delantero</span></div><div class="pbody"><div class="pname">Harry Kane</div><div class="pclub"><svg viewBox="0 0 14 14" style="width:14px;height:14px;"><circle cx="7" cy="7" r="6" fill="#DC052D"/><text x="7" y="9.5" text-anchor="middle" font-size="4.5" fill="#fff" font-weight="bold">FCB</text></svg> Bayern · 🏴󠁧󠁢󠁥󠁮󠁧󠁿 Inglaterra</div><div class="pstats"><div class="pst"><div class="pstn">53</div><div class="pstl">Goles 2025-26</div></div><div class="pst"><div class="pstn">12</div><div class="pstl">Goles Champions</div></div><div class="pst"><div class="pstn">45</div><div class="pstl">Partidos jugados</div></div></div><p style="font-size:11px;color:var(--t3);margin-top:10px;line-height:1.6;">53 goles en 45 partidos esta temporada. El más productivo de Europa en 2025-26. Récord del Bayern.</p></div></div>
-      <div class="pcard" tabindex="0" aria-label="Luis Díaz, delantero Bayern Munich, gol clave vs Real Madrid"><div class="phead" style="background:linear-gradient(135deg,#DC052D,#7A0016);"><span style="font-size:50px;">⚡</span><span class="ppos">Extremo Izq.</span></div><div class="pbody"><div class="pname">Luis Díaz</div><div class="pclub"><svg viewBox="0 0 14 14" style="width:14px;height:14px;"><circle cx="7" cy="7" r="6" fill="#DC052D"/><text x="7" y="9.5" text-anchor="middle" font-size="4.5" fill="#fff" font-weight="bold">FCB</text></svg> Bayern · 🇨🇴 Colombia</div><div class="pstats"><div class="pst"><div class="pstn">24G</div><div class="pstl">+18A esta temporada</div></div><div class="pst"><div class="pstn">6</div><div class="pstl">Goles Champions</div></div><div class="pst"><div class="pstn">87'</div><div class="pstl">Gol vs Real Madrid</div></div></div><p style="font-size:11px;color:var(--t3);margin-top:10px;line-height:1.6;">En promedio da un gol o asistencia por partido. Su gol en el 87' eliminó al Real Madrid. Candidato al Balón de Oro.</p></div></div>
-      <div class="pcard" tabindex="0" aria-label="Kylian Mbappé, Real Madrid, lesionado"><div class="phead" style="background:linear-gradient(135deg,#001f5e,#003DA5);"><span style="font-size:50px;">🌟</span><span class="ppos">Delantero</span></div><div class="pbody"><div class="pname">Kylian Mbappé</div><div class="pclub"><svg viewBox="0 0 14 14" style="width:14px;height:14px;"><circle cx="7" cy="7" r="6" fill="#fff" stroke="#bbb" stroke-width="1"/><text x="7" y="9.5" text-anchor="middle" font-size="4.5" fill="#00529F" font-weight="bold">RMA</text></svg> Real Madrid · 🇫🇷 Francia</div><div class="pstats"><div class="pst"><div class="pstn">Lesionado</div><div class="pstl">Dudoso Mundial</div></div><div class="pst"><div class="pstn">Máximo</div><div class="pstl">Goleador Champions</div></div><div class="pst"><div class="pstn">Real Madrid</div><div class="pstl">Eliminado en cuartos</div></div></div><p style="font-size:11px;color:var(--t3);margin-top:10px;line-height:1.6;">Máximo goleador histórico de la Champions 2025-26 pese a estar lesionado. Su temporada terminó en la eliminación del Real Madrid.</p></div></div>
-      <div class="pcard" tabindex="0" aria-label="Lamine Yamal, extremo FC Barcelona, joya del fútbol mundial"><div class="phead" style="background:linear-gradient(135deg,#004D98,#A50044);"><span style="font-size:50px;">💫</span><span class="ppos">Extremo Der.</span></div><div class="pbody"><div class="pname">Lamine Yamal</div><div class="pclub"><svg viewBox="0 0 14 14" style="width:14px;height:14px;"><circle cx="7" cy="7" r="6" fill="#004D98"/><text x="7" y="9.5" text-anchor="middle" font-size="4.5" fill="#fff" font-weight="bold">FCB</text></svg> Barcelona · 🇪🇸 España</div><div class="pstats"><div class="pst"><div class="pstn">18</div><div class="pstl">Años</div></div><div class="pst"><div class="pstn">LaLiga</div><div class="pstl">Líder con Barcelona</div></div><div class="pst"><div class="pstn">Euro 2024</div><div class="pstl">Campeón</div></div></div><p style="font-size:11px;color:var(--t3);margin-top:10px;line-height:1.6;">El futbolista más joven en ganar la Eurocopa (2024). A sus 18 años es considerado el mejor talento del mundo.</p></div></div>
+      <div class="pcard" tabindex="0"><div class="phead" style="background:linear-gradient(135deg,#DC052D,#7A0016);"><span style="font-size:50px;">🎯</span><span class="ppos">Delantero</span></div><div class="pbody"><div class="pname">Harry Kane</div><div class="pclub">Bayern · 🏴󠁧󠁢󠁥󠁮󠁧󠁿 Inglaterra</div><div class="pstats"><div class="pst"><div class="pstn">53</div><div class="pstl">Goles 2025-26</div></div><div class="pst"><div class="pstn">12</div><div class="pstl">Goles Champions</div></div><div class="pst"><div class="pstn">45</div><div class="pstl">Partidos</div></div></div><p style="font-size:11px;color:var(--t3);margin-top:10px;line-height:1.6;">53 goles en 45 partidos esta temporada. El más productivo de Europa en 2025-26.</p></div></div>
+      <div class="pcard" tabindex="0"><div class="phead" style="background:linear-gradient(135deg,#DC052D,#7A0016);"><span style="font-size:50px;">⚡</span><span class="ppos">Extremo Izq.</span></div><div class="pbody"><div class="pname">Luis Díaz</div><div class="pclub">Bayern · 🇨🇴 Colombia</div><div class="pstats"><div class="pst"><div class="pstn">24G</div><div class="pstl">+18A temporada</div></div><div class="pst"><div class="pstn">6</div><div class="pstl">Goles Champions</div></div><div class="pst"><div class="pstn">87'</div><div class="pstl">Gol vs R. Madrid</div></div></div><p style="font-size:11px;color:var(--t3);margin-top:10px;line-height:1.6;">Su gol en el 87' eliminó al Real Madrid. Candidato al Balón de Oro.</p></div></div>
+      <div class="pcard" tabindex="0"><div class="phead" style="background:linear-gradient(135deg,#001f5e,#003DA5);"><span style="font-size:50px;">🌟</span><span class="ppos">Delantero</span></div><div class="pbody"><div class="pname">Kylian Mbappé</div><div class="pclub">Real Madrid · 🇫🇷 Francia</div><div class="pstats"><div class="pst"><div class="pstn">Lesionado</div><div class="pstl">Dudoso Mundial</div></div><div class="pst"><div class="pstn">Máximo</div><div class="pstl">Goleador UCL</div></div><div class="pst"><div class="pstn">Elim.</div><div class="pstl">Cuartos UCL</div></div></div><p style="font-size:11px;color:var(--t3);margin-top:10px;line-height:1.6;">Máximo goleador histórico de la Champions 2025-26 pese a estar lesionado.</p></div></div>
+      <div class="pcard" tabindex="0"><div class="phead" style="background:linear-gradient(135deg,#004D98,#A50044);"><span style="font-size:50px;">💫</span><span class="ppos">Extremo Der.</span></div><div class="pbody"><div class="pname">Lamine Yamal</div><div class="pclub">Barcelona · 🇪🇸 España</div><div class="pstats"><div class="pst"><div class="pstn">18</div><div class="pstl">Años</div></div><div class="pst"><div class="pstn">LaLiga</div><div class="pstl">Líder con Barça</div></div><div class="pst"><div class="pstn">Euro 2024</div><div class="pstl">Campeón</div></div></div><p style="font-size:11px;color:var(--t3);margin-top:10px;line-height:1.6;">El futbolista más joven en ganar la Eurocopa (2024). A sus 18 años es considerado el mejor talento del mundo.</p></div></div>
     </div>
   </div>
 </div>
@@ -813,12 +724,11 @@ footer{background:#0d0f14;border-top:1px solid var(--bdr);padding:18px 24px;text
 <!-- ═══ HISTORIA ═══ -->
 <div id="page-historia" class="page" aria-label="Historia del fútbol">
   <div class="shdr"><h1 class="stitle">Historia del Fútbol</h1><span style="font-size:11px;color:var(--t3);">De 1863 a hoy</span></div>
-  <div class="hcard" tabindex="0"><span class="hpill">Orígenes</span><div class="hyr">1863</div><div class="htitle">El nacimiento del fútbol moderno</div><p class="htext">El 26 de octubre de 1863, once clubes ingleses se reunieron en Londres y fundaron la Football Association (FA), la primera federación del mundo. Redactaron 13 reglas formales que separaron el fútbol del rugby. El juego dejó de ser un caos y se convirtió en un deporte unificado.</p><div class="srow"><div class="sbox"><div class="snum">11</div><div class="slbl">Clubes fundadores</div></div><div class="sbox"><div class="snum">1863</div><div class="slbl">Año FA fundada</div></div><div class="sbox"><div class="snum">13</div><div class="slbl">Reglas originales</div></div></div></div>
-  <div class="hcard" tabindex="0"><span class="hpill">Expansión</span><div class="hyr">1904–1930</div><div class="htitle">FIFA, CONMEBOL y el primer Mundial</div><p class="htext">En 1904 nació la FIFA en París con 7 naciones. CONMEBOL se fundó en 1916, siendo la confederación continental más antigua. La primera Copa del Mundo se celebró en Uruguay en 1930 con 13 selecciones; Uruguay ganó 4-2 a Argentina en la final del Estadio Centenario.</p><div class="tl"><div class="tli"><div class="tldot" aria-hidden="true"></div><div class="tly">1904</div><div class="tlt">Fundación de la FIFA en París — 7 naciones fundadoras.</div></div><div class="tli"><div class="tldot" aria-hidden="true"></div><div class="tly">1916</div><div class="tlt">Fundación de CONMEBOL, la confederación continental más antigua.</div></div><div class="tli"><div class="tldot" aria-hidden="true"></div><div class="tly">1930</div><div class="tlt">Primera Copa del Mundo en Uruguay. 13 equipos participantes. Uruguay campeón.</div></div></div></div>
-  <div class="hcard" tabindex="0"><span class="hpill">Era dorada</span><div class="hyr">1950–1970</div><div class="htitle">Pelé, Di Stéfano y el fútbol total holandés</div><p class="htext">Brasil ganó los Mundiales de 1958, 1962 y 1970. Pelé marcó 1.281 goles en su carrera. El Real Madrid ganó cinco Copas de Europa consecutivas (1956-1960) con Di Stéfano y Puskás. Johan Cruyff y Holanda revolucionaron el juego con el "fútbol total".</p><div class="ggrid"><div class="gcard"><div class="gcn">Pelé</div><div class="gci">Brasil · 1.281 goles · 3 Mundiales</div></div><div class="gcard"><div class="gcn">Di Stéfano</div><div class="gci">Argentina/España · 5 Copas Europa</div></div><div class="gcard"><div class="gcn">Johan Cruyff</div><div class="gci">Holanda · Fútbol total · Balón de Oro ×3</div></div><div class="gcard"><div class="gcn">Garrincha</div><div class="gci">Brasil · Campeón 1958 y 1962</div></div></div></div>
-  <div class="hcard" tabindex="0"><span class="hpill">Siglo XXI</span><div class="hyr">2000–2022</div><div class="htitle">Messi, Ronaldo, el VAR y Qatar 2022</div><p class="htext">Messi y Ronaldo dominaron más de 15 años acumulando 14 Balones de Oro entre los dos. España ganó dos Eurocopas (2008, 2012) y un Mundial (2010). El VAR llegó en Rusia 2018. Argentina conquistó su tercer Mundial en Qatar 2022 con Messi como figura en una dramática final contra Francia.</p><div class="srow"><div class="sbox"><div class="snum">8</div><div class="slbl">Balones de Oro de Messi</div></div><div class="sbox"><div class="snum">5</div><div class="slbl">Balones de Oro de Ronaldo</div></div><div class="sbox"><div class="snum">2018</div><div class="slbl">Llegada del VAR</div></div><div class="sbox"><div class="snum">Qatar</div><div class="slbl">Mundial 2022</div></div></div></div>
-  <div class="hcard" tabindex="0"><span class="hpill">Actualidad</span><div class="hyr">2023–2026</div><div class="htitle">Nueva generación y el Mundial de 48 selecciones</div><p class="htext">Bayern campeón de Bundesliga 2026 y favorito en Champions. PSG, campeón defensor (5-0 vs Inter en la final 2025). Barcelona domina LaLiga 2026 con 82 puntos. El Mundial 2026 en USA, Canadá y México tendrá 48 selecciones, el más grande de la historia. Yamal (18), Bellingham, Mbappé y Vinícius representan la nueva era.</p><div class="tl"><div class="tli"><div class="tldot" aria-hidden="true"></div><div class="tly">2022</div><div class="tlt">Argentina campeona del mundo en Qatar con Messi como figura. Final vs Francia en penales.</div></div><div class="tli"><div class="tldot" aria-hidden="true"></div><div class="tly">2023</div><div class="tlt">Man City tripleta histórica: Premier, FA Cup y Champions League bajo Guardiola.</div></div><div class="tli"><div class="tldot" aria-hidden="true"></div><div class="tly">2025</div><div class="tlt">PSG campeón de Champions (5-0 vs Inter). Willian Pacho: primer ecuatoriano en ganar la orejona.</div></div><div class="tli"><div class="tldot" aria-hidden="true"></div><div class="tly">2026</div><div class="tlt">Mundial USA-Canadá-México con 48 selecciones. El más grande de la historia del fútbol.</div></div></div></div>
-  <div class="hcard" tabindex="0"><span class="hpill ec">🇪🇨 Ecuador</span><div class="hyr" style="color:var(--yel);">Ecuador</div><div class="htitle">De los guayos de barro al primer campeón de Champions</div><p class="htext">La FEF fue fundada en 1925. Ecuador debutó en su primer Mundial en Corea-Japón 2002 (venció a Croacia 1-0). Llegó a octavos en Alemania 2006. En Qatar 2022 inauguró la Copa del Mundo venciendo 2-0 al anfitrión Qatar. Willian Pacho se convirtió en 2025 en el primer ecuatoriano en ganar la Champions League con el PSG. Piero Hincapié juega en el Arsenal de la Premier.</p><div class="srow"><div class="sbox"><div class="snum">1925</div><div class="slbl">Fundación FEF</div></div><div class="sbox"><div class="snum">3</div><div class="slbl">Mundiales</div></div><div class="sbox"><div class="snum">Pacho</div><div class="slbl">1er campeón Champions</div></div><div class="sbox"><div class="snum">2022</div><div class="slbl">Inauguró Qatar</div></div></div></div>
+  <div class="hcard" tabindex="0"><span class="hpill">Orígenes</span><div class="hyr">1863</div><div class="htitle">El nacimiento del fútbol moderno</div><p class="htext">El 26 de octubre de 1863, once clubes ingleses se reunieron en Londres y fundaron la Football Association (FA), la primera federación del mundo. Redactaron 13 reglas formales que separaron el fútbol del rugby.</p><div class="srow"><div class="sbox2"><div class="snum">11</div><div class="slbl">Clubes fundadores</div></div><div class="sbox2"><div class="snum">1863</div><div class="slbl">Año FA fundada</div></div><div class="sbox2"><div class="snum">13</div><div class="slbl">Reglas originales</div></div></div></div>
+  <div class="hcard" tabindex="0"><span class="hpill">Expansión</span><div class="hyr">1904–1930</div><div class="htitle">FIFA, CONMEBOL y el primer Mundial</div><p class="htext">En 1904 nació la FIFA en París con 7 naciones. CONMEBOL se fundó en 1916. La primera Copa del Mundo se celebró en Uruguay en 1930 con 13 selecciones; Uruguay ganó 4-2 a Argentina en la final del Estadio Centenario.</p><div class="tl"><div class="tli"><div class="tldot"></div><div class="tly">1904</div><div class="tlt">Fundación de la FIFA en París — 7 naciones fundadoras.</div></div><div class="tli"><div class="tldot"></div><div class="tly">1916</div><div class="tlt">Fundación de CONMEBOL, la confederación continental más antigua.</div></div><div class="tli"><div class="tldot"></div><div class="tly">1930</div><div class="tlt">Primera Copa del Mundo en Uruguay. 13 equipos participantes. Uruguay campeón.</div></div></div></div>
+  <div class="hcard" tabindex="0"><span class="hpill">Siglo XXI</span><div class="hyr">2000–2022</div><div class="htitle">Messi, Ronaldo, el VAR y Qatar 2022</div><p class="htext">Messi y Ronaldo dominaron más de 15 años acumulando 14 Balones de Oro entre los dos. España ganó dos Eurocopas y un Mundial (2010). El VAR llegó en Rusia 2018. Argentina conquistó su tercer Mundial en Qatar 2022 con Messi como figura.</p><div class="srow"><div class="sbox2"><div class="snum">8</div><div class="slbl">Balones de Oro de Messi</div></div><div class="sbox2"><div class="snum">5</div><div class="slbl">Balones de Oro de Ronaldo</div></div><div class="sbox2"><div class="snum">2018</div><div class="slbl">Llegada del VAR</div></div></div></div>
+  <div class="hcard" tabindex="0"><span class="hpill">Actualidad</span><div class="hyr">2023–2026</div><div class="htitle">Nueva generación y el Mundial de 48 selecciones</div><p class="htext">Bayern campeón de Bundesliga 2026. PSG, campeón defensor de Champions (5-0 vs Inter en la final 2025). Barcelona domina LaLiga 2026. El Mundial 2026 en USA, Canadá y México tendrá 48 selecciones.</p><div class="tl"><div class="tli"><div class="tldot"></div><div class="tly">2022</div><div class="tlt">Argentina campeona del mundo en Qatar con Messi. Final vs Francia en penales.</div></div><div class="tli"><div class="tldot"></div><div class="tly">2025</div><div class="tlt">PSG campeón de Champions (5-0 vs Inter). Willian Pacho: primer ecuatoriano en ganar la orejona.</div></div><div class="tli"><div class="tldot"></div><div class="tly">2026</div><div class="tlt">Mundial USA-Canadá-México con 48 selecciones. El más grande de la historia del fútbol.</div></div></div></div>
+  <div class="hcard" tabindex="0"><span class="hpill ec">🇪🇨 Ecuador</span><div class="hyr" style="color:var(--yel);">Ecuador</div><div class="htitle">De los guayos de barro al primer campeón de Champions</div><p class="htext">La FEF fue fundada en 1925. Ecuador debutó en su primer Mundial en Corea-Japón 2002. En Qatar 2022 inauguró la Copa del Mundo venciendo 2-0 al anfitrión. Willian Pacho se convirtió en 2025 en el primer ecuatoriano en ganar la Champions League con el PSG.</p><div class="srow"><div class="sbox2"><div class="snum">1925</div><div class="slbl">Fundación FEF</div></div><div class="sbox2"><div class="snum">3</div><div class="slbl">Mundiales</div></div><div class="sbox2"><div class="snum">Pacho</div><div class="slbl">1er campeón Champions</div></div><div class="sbox2"><div class="snum">2022</div><div class="slbl">Inauguró Qatar</div></div></div></div>
 </div>
 
 <!-- ═══ COMUNIDAD ═══ -->
@@ -834,45 +744,66 @@ footer{background:#0d0f14;border-top:1px solid var(--bdr);padding:18px 24px;text
     </div>
     <h2 class="stitle" style="margin-bottom:14px;">Comentarios recientes</h2>
     <div id="clist" aria-live="polite">
-      <div class="citem"><div class="cih"><span class="cin">Andrés V. · PSG</span><span class="cid">hace 5 min</span></div><p class="cit">¡Pacho es un orgullo ecuatoriano! Ver a dos jugadores de Ecuador en las semifinales de Champions es histórico. Hay que apoyarlos.</p></div>
+      <div class="citem"><div class="cih"><span class="cin">Andrés V. · PSG</span><span class="cid">hace 5 min</span></div><p class="cit">¡Pacho es un orgullo ecuatoriano! Ver a dos jugadores de Ecuador en las semifinales de Champions es histórico.</p></div>
       <div class="citem"><div class="cih"><span class="cin">María J. · LDU Quito</span><span class="cid">hace 22 min</span></div><p class="cit">El partido de hoy de LDU vs Lanús es clave. Si ganamos los 3 puntos, prácticamente aseguramos los octavos de la Libertadores. ¡Vamos albos!</p></div>
-      <div class="citem"><div class="cih"><span class="cin">Roberto P. · Bayern</span><span class="cid">hace 1 hora</span></div><p class="cit">Kane con 53 goles en 45 partidos es una locura. El Bayern merece ganar esta Champions. Luis Díaz también está imparable esta temporada.</p></div>
+      <div class="citem"><div class="cih"><span class="cin">Roberto P. · Bayern</span><span class="cid">hace 1 hora</span></div><p class="cit">Kane con 53 goles en 45 partidos es una locura. El Bayern merece ganar esta Champions. Luis Díaz también está imparable.</p></div>
     </div>
   </div>
 </div>
 
 </main>
 
-<!-- RIGHT SIDEBAR -->
+<!-- ══ RIGHT SIDEBAR ══ -->
 <aside class="rnav" aria-label="Goleadores y estadísticas">
   <div class="wgt">
-    <div class="whdr"><span class="wtitle">⚽ Goleadores Champions 26</span><span class="wlink" onclick="goTo('tabla')">Ver →</span></div>
-    <div role="list" aria-label="Goleadores UEFA Champions League 2025-26">
-      <div class="scrow" role="listitem" aria-label="1. Harry Kane, Bayern, 12 goles"><span class="scpos">1</span><span class="scflag">🏴󠁧󠁢󠁥󠁮󠁧󠁿</span><div class="scinf"><div class="scname">H. Kane</div><div class="scteam">Bayern München</div></div><span class="scg">12</span></div>
-      <div class="scrow" role="listitem" aria-label="2. Kylian Mbappé (lesionado), Real Madrid, máximo goleador"><span class="scpos">2</span><span class="scflag">🇫🇷</span><div class="scinf"><div class="scname">K. Mbappé</div><div class="scteam">Real Madrid (lesionado)</div></div><span class="scg" style="color:var(--yel);">+12</span></div>
-      <div class="scrow" role="listitem" aria-label="3. Julián Álvarez, Atlético de Madrid, 9 goles"><span class="scpos">3</span><span class="scflag">🇦🇷</span><div class="scinf"><div class="scname">J. Álvarez</div><div class="scteam">Atlético de Madrid</div></div><span class="scg">9</span></div>
-      <div class="scrow" role="listitem" aria-label="4. Luis Díaz, Bayern Munich, 6 goles"><span class="scpos">4</span><span class="scflag">🇨🇴</span><div class="scinf"><div class="scname">L. Díaz</div><div class="scteam">Bayern München</div></div><span class="scg">6</span></div>
-      <div class="scrow" role="listitem" aria-label="5. Bukayo Saka, Arsenal"><span class="scpos">5</span><span class="scflag">🏴󠁧󠁢󠁥󠁮󠁧󠁿</span><div class="scinf"><div class="scname">B. Saka</div><div class="scteam">Arsenal FC</div></div><span class="scg">5</span></div>
+    <div class="whdr"><span class="wtitle">⚽ Goleadores Champions 26</span></div>
+    <div role="list">
+      <div class="scrow" role="listitem"><span class="scpos">1</span><span class="scflag">🏴󠁧󠁢󠁥󠁮󠁧󠁿</span><div class="scinf"><div class="scname">H. Kane</div><div class="scteam">Bayern München</div></div><span class="scg">12</span></div>
+      <div class="scrow" role="listitem"><span class="scpos">2</span><span class="scflag">🇫🇷</span><div class="scinf"><div class="scname">K. Mbappé</div><div class="scteam">Real Madrid (lesionado)</div></div><span class="scg" style="color:var(--yel);">+12</span></div>
+      <div class="scrow" role="listitem"><span class="scpos">3</span><span class="scflag">🇦🇷</span><div class="scinf"><div class="scname">J. Álvarez</div><div class="scteam">Atlético de Madrid</div></div><span class="scg">9</span></div>
+      <div class="scrow" role="listitem"><span class="scpos">4</span><span class="scflag">🇨🇴</span><div class="scinf"><div class="scname">L. Díaz</div><div class="scteam">Bayern München</div></div><span class="scg">6</span></div>
+      <div class="scrow" role="listitem"><span class="scpos">5</span><span class="scflag">🏴󠁧󠁢󠁥󠁮󠁧󠁿</span><div class="scinf"><div class="scname">B. Saka</div><div class="scteam">Arsenal FC</div></div><span class="scg">5</span></div>
     </div>
   </div>
 
   <div class="wgt">
     <div class="whdr"><span class="wtitle">📅 Hoy se juega</span></div>
     <div role="list">
-      <div class="mr" tabindex="0" role="listitem" aria-label="PSG vs Bayern Munich, 14:00 Ecuador, Champions semifinal" onclick="toast('PSG vs Bayern — 14:00 EC')"><div class="mt">14:00<br><span style="font-size:9px;color:var(--grn);">EC</span></div><div class="mts"><div class="mtr"><span class="mtn" style="font-size:12px;"><svg class="tlogo" viewBox="0 0 22 22" aria-label="PSG"><circle cx="11" cy="11" r="10" fill="#003D83"/><circle cx="11" cy="11" r="6" fill="#fff"/><text x="11" y="14.5" text-anchor="middle" font-size="7" fill="#003D83" font-weight="bold">PSG</text></svg>PSG</span></div><div class="mtr"><span class="mtn dim" style="font-size:12px;"><svg class="tlogo" viewBox="0 0 22 22" aria-label="Bayern"><circle cx="11" cy="11" r="10" fill="#DC052D"/><text x="11" y="14.5" text-anchor="middle" font-size="7" fill="#fff" font-weight="bold">FCB</text></svg>Bayern</span></div></div><span class="mtv">ESPN</span></div>
-      <div class="mr" tabindex="0" role="listitem" aria-label="LDU Quito vs Lanús, 17:00 Ecuador, Copa Libertadores" onclick="toast('LDU vs Lanús — 17:00 EC')"><div class="mt">17:00<br><span style="font-size:9px;color:var(--grn);">EC</span></div><div class="mts"><div class="mtr"><span class="mtn" style="font-size:12px;"><svg class="tlogo" viewBox="0 0 22 22" aria-label="LDU"><circle cx="11" cy="11" r="10" fill="#fff" stroke="#002366" stroke-width="2"/><text x="11" y="14.5" text-anchor="middle" font-size="7" fill="#002366" font-weight="bold">LDU</text></svg>LDU Quito</span></div><div class="mtr"><span class="mtn dim" style="font-size:12px;"><svg class="tlogo" viewBox="0 0 22 22" aria-label="Lanús"><circle cx="11" cy="11" r="10" fill="#CC0000"/><text x="11" y="14.5" text-anchor="middle" font-size="7" fill="#fff" font-weight="bold">LAN</text></svg>Lanús</span></div></div><span class="mtv">ESPN</span></div>
+      <div class="mr" tabindex="0" role="listitem" onclick="toast('PSG vs Bayern — 14:00 EC')"><div class="mt">14:00<br><span style="font-size:9px;color:var(--grn);">EC</span></div><div class="mts"><div class="mtr"><span class="mtn" style="font-size:12px;"><svg class="tlogo" viewBox="0 0 22 22"><circle cx="11" cy="11" r="10" fill="#003D83"/><circle cx="11" cy="11" r="6" fill="#fff"/><text x="11" y="14.5" text-anchor="middle" font-size="7" fill="#003D83" font-weight="bold">PSG</text></svg>PSG</span></div><div class="mtr"><span class="mtn dim" style="font-size:12px;"><svg class="tlogo" viewBox="0 0 22 22"><circle cx="11" cy="11" r="10" fill="#DC052D"/><text x="11" y="14.5" text-anchor="middle" font-size="7" fill="#fff" font-weight="bold">FCB</text></svg>Bayern</span></div></div><span class="mtv">ESPN</span></div>
+      <div class="mr" tabindex="0" role="listitem" onclick="toast('LDU vs Lanús — 17:00 EC')"><div class="mt">17:00<br><span style="font-size:9px;color:var(--grn);">EC</span></div><div class="mts"><div class="mtr"><span class="mtn" style="font-size:12px;"><svg class="tlogo" viewBox="0 0 22 22"><circle cx="11" cy="11" r="10" fill="#fff" stroke="#002366" stroke-width="2"/><text x="11" y="14.5" text-anchor="middle" font-size="7" fill="#002366" font-weight="bold">LDU</text></svg>LDU Quito</span></div><div class="mtr"><span class="mtn dim" style="font-size:12px;"><svg class="tlogo" viewBox="0 0 22 22"><circle cx="11" cy="11" r="10" fill="#CC0000"/><text x="11" y="14.5" text-anchor="middle" font-size="7" fill="#fff" font-weight="bold">LAN</text></svg>Lanús</span></div></div><span class="mtv">ESPN</span></div>
     </div>
   </div>
 
   <div class="wgt">
     <div class="whdr"><span class="wtitle">🏆 LaLiga — Últimos resultados</span></div>
     <div role="list">
-      <div class="mr" role="listitem" tabindex="0" aria-label="Barcelona 2 Getafe 0, jornada 33 LaLiga" onclick="toast('Barcelona 2–0 Getafe · Jornada 33')"><div class="mt" style="color:var(--t3);">FIN</div><div class="mts"><div class="mtr"><span class="mtn" style="font-size:12px;"><svg class="tlogo" viewBox="0 0 22 22" aria-label="FCB"><circle cx="11" cy="11" r="10" fill="#004D98"/><text x="11" y="14.5" text-anchor="middle" font-size="7" fill="#fff" font-weight="bold">FCB</text></svg>Barcelona</span><span class="ms w" style="font-size:12px;">2</span></div><div class="mtr"><span class="mtn dim" style="font-size:12px;"><svg class="tlogo" viewBox="0 0 22 22" aria-label="GET"><circle cx="11" cy="11" r="10" fill="#0066CC"/><text x="11" y="14.5" text-anchor="middle" font-size="7" fill="#fff" font-weight="bold">GET</text></svg>Getafe</span><span class="ms" style="font-size:12px;">0</span></div></div></div>
-      <div class="mr" role="listitem" tabindex="0" aria-label="Real Madrid 0 Betis 1, jornada 33 LaLiga" onclick="toast('Real Madrid 0–1 Betis · Jornada 33')"><div class="mt" style="color:var(--t3);">FIN</div><div class="mts"><div class="mtr"><span class="mtn" style="font-size:12px;"><svg class="tlogo" viewBox="0 0 22 22" aria-label="RMA"><circle cx="11" cy="11" r="10" fill="#fff" stroke="#bbb" stroke-width="1"/><text x="11" y="14.5" text-anchor="middle" font-size="7" fill="#00529F" font-weight="bold">RMA</text></svg>Real Madrid</span><span class="ms" style="font-size:12px;">0</span></div><div class="mtr"><span class="mtn dim" style="font-size:12px;"><svg class="tlogo" viewBox="0 0 22 22" aria-label="BET"><circle cx="11" cy="11" r="10" fill="#00954C"/><text x="11" y="14.5" text-anchor="middle" font-size="7" fill="#fff" font-weight="bold">BET</text></svg>Betis</span><span class="ms w" style="font-size:12px;">1</span></div></div></div>
+      <div class="mr" role="listitem" tabindex="0" onclick="toast('Barcelona 2–0 Getafe · Jornada 33')"><div class="mt" style="color:var(--t3);">FIN</div><div class="mts"><div class="mtr"><span class="mtn" style="font-size:12px;"><svg class="tlogo" viewBox="0 0 22 22"><circle cx="11" cy="11" r="10" fill="#004D98"/><text x="11" y="14.5" text-anchor="middle" font-size="7" fill="#fff" font-weight="bold">FCB</text></svg>Barcelona</span><span class="ms w" style="font-size:12px;">2</span></div><div class="mtr"><span class="mtn dim" style="font-size:12px;"><svg class="tlogo" viewBox="0 0 22 22"><circle cx="11" cy="11" r="10" fill="#0066CC"/><text x="11" y="14.5" text-anchor="middle" font-size="7" fill="#fff" font-weight="bold">GET</text></svg>Getafe</span><span class="ms" style="font-size:12px;">0</span></div></div></div>
+      <div class="mr" role="listitem" tabindex="0" onclick="toast('Real Madrid 0–1 Betis · Jornada 33')"><div class="mt" style="color:var(--t3);">FIN</div><div class="mts"><div class="mtr"><span class="mtn" style="font-size:12px;"><svg class="tlogo" viewBox="0 0 22 22"><circle cx="11" cy="11" r="10" fill="#fff" stroke="#bbb" stroke-width="1"/><text x="11" y="14.5" text-anchor="middle" font-size="7" fill="#00529F" font-weight="bold">RMA</text></svg>Real Madrid</span><span class="ms" style="font-size:12px;">0</span></div><div class="mtr"><span class="mtn dim" style="font-size:12px;"><svg class="tlogo" viewBox="0 0 22 22"><circle cx="11" cy="11" r="10" fill="#00954C"/><text x="11" y="14.5" text-anchor="middle" font-size="7" fill="#fff" font-weight="bold">BET</text></svg>Betis</span><span class="ms w" style="font-size:12px;">1</span></div></div></div>
     </div>
   </div>
 </aside>
 </div>
+
+<!-- ══ BOTTOM NAVIGATION (móvil) ══ -->
+<nav class="bottom-nav" aria-label="Navegación inferior">
+  <div class="bottom-nav-inner">
+    <button class="bnav-item on" id="bnav-inicio" onclick="goTo('inicio')" aria-label="Inicio">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>Inicio
+    </button>
+    <button class="bnav-item" id="bnav-noticias" onclick="goTo('noticias')" aria-label="Noticias">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 0-2 2zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2"/></svg>Noticias
+    </button>
+    <button class="bnav-item" id="bnav-partidos" onclick="goTo('partidos')" aria-label="Partidos">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>Partidos
+    </button>
+    <button class="bnav-item" id="bnav-tabla" onclick="goTo('tabla')" aria-label="Tabla">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>Tabla
+    </button>
+    <button class="bnav-item" onclick="openDrawer()" aria-label="Más secciones">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="5" r="1" fill="currentColor"/><circle cx="12" cy="12" r="1" fill="currentColor"/><circle cx="12" cy="19" r="1" fill="currentColor"/></svg>Más
+    </button>
+  </div>
+</nav>
 
 <footer role="contentinfo">
   <p style="font-size:13px;font-weight:700;color:var(--t1);margin-bottom:3px;">Toque <span style="color:var(--grn);">&amp;</span> Pase</p>
@@ -880,209 +811,251 @@ footer{background:#0d0f14;border-top:1px solid var(--bdr);padding:18px 24px;text
 </footer>
 
 <script>
-/* ── Tablas de posiciones con API football-data.org (CORS abierto, gratis) ── */
-var FD_KEY='c1c9cfed0b354edca2ce6b220447352c'; // token público de prueba
-var leagues={
-  'll':{id:2014,name:'LaLiga',chZones:4,euZones:2,reZones:3},
-  'pl':{id:2021,name:'Premier League',chZones:4,euZones:3,reZones:3},
-  'bl':{id:2002,name:'Bundesliga',chZones:4,euZones:2,reZones:2},
-  'sa':{id:2019,name:'Serie A',chZones:4,euZones:2,reZones:3},
-  'l1':{id:2015,name:'Ligue 1',chZones:4,euZones:2,reZones:3}
-  'wc':{id:2000,name:'Mundial',chZones:0,euZones:0,reZones:0}
-  
+/* ══════════════════════════════
+   CONFIGURACIÓN DE LIGAS
+   CORRECCIÓN: faltaba coma entre 'l1' y 'wc', lo que rompía todo el JS
+══════════════════════════════ */
+var FD_KEY = 'c1c9cfed0b354edca2ce6b220447352c';
+var leagues = {
+  'll': { id: 2014, name: 'LaLiga', chZones: 4, euZones: 2, reZones: 3 },
+  'pl': { id: 2021, name: 'Premier League', chZones: 4, euZones: 3, reZones: 3 },
+  'bl': { id: 2002, name: 'Bundesliga', chZones: 4, euZones: 2, reZones: 2 },
+  'sa': { id: 2019, name: 'Serie A', chZones: 4, euZones: 2, reZones: 3 },
+  'l1': { id: 2015, name: 'Ligue 1', chZones: 4, euZones: 2, reZones: 3 }
 };
-var tblLoaded={};
+var tblLoaded = {};
 
-function posClass(pos,cfg){
-  if(pos<=cfg.chZones)return'ch';
-  if(pos<=cfg.chZones+cfg.euZones)return'eu';
-  var total=20;if(cfg.id===2002||cfg.id===2015)total=18;
-  if(pos>total-cfg.reZones)return're';
-  return'';
+function posClass(pos, cfg) {
+  if (pos <= cfg.chZones) return 'ch';
+  if (pos <= cfg.chZones + cfg.euZones) return 'eu';
+  var total = 20;
+  if (cfg.id === 2002 || cfg.id === 2015) total = 18;
+  if (pos > total - cfg.reZones) return 're';
+  return '';
 }
 
-function renderTable(key,standings){
-  var cfg=leagues[key];
-  var wrap=document.getElementById('tbl-'+key);
-  if(!wrap)return;
-  var rows=standings.map(function(e,i){
-    var pos=e.position||(i+1);
-    var pc=posClass(pos,cfg);
-    var gd=e.goalDifference>=0?'+'+e.goalDifference:e.goalDifference;
-    var gdClass=e.goalDifference>0?'gpos':e.goalDifference<0?'gneg':'';
-    var logo=e.team&&e.team.crest?'<img class="rlogo" src="'+e.team.crest+'" alt="" onerror="this.style.display=\'none\'">':'';
-    var name=e.team?e.team.shortName||e.team.name:'—';
-    var form=(e.form||'').split(',').slice(-5).map(function(f){
-      var cl=f==='W'?'fw':f==='D'?'fd2':f==='L'?'fl':'';
-      return'<div class="fd '+cl+'" title="'+f+'"></div>';
+function renderTable(key, standings) {
+  var cfg = leagues[key];
+  var wrap = document.getElementById('tbl-' + key);
+  if (!wrap) return;
+  var rows = standings.map(function(e, i) {
+    var pos = e.position || (i + 1);
+    var pc = posClass(pos, cfg);
+    var gd = e.goalDifference >= 0 ? '+' + e.goalDifference : e.goalDifference;
+    var gdClass = e.goalDifference > 0 ? 'gpos' : e.goalDifference < 0 ? 'gneg' : '';
+    var logo = (e.team && e.team.crest)
+      ? '<img class="rlogo" src="' + e.team.crest + '" alt="" onerror="this.style.display=\'none\'">'
+      : '';
+    var name = e.team ? (e.team.shortName || e.team.name) : '—';
+    var form = (e.form || '').split(',').slice(-5).map(function(f) {
+      var cl = f === 'W' ? 'fw' : f === 'D' ? 'fd2' : f === 'L' ? 'fl' : '';
+      return '<div class="fd ' + cl + '" title="' + f + '"></div>';
     }).join('');
-    return'<tr>'+
-      '<td><span class="rpos '+pc+'">'+pos+'</span></td>'+
-      '<td><div class="rteam">'+logo+'<span class="rname">'+name+'</span></div></td>'+
-      '<td>'+e.playedGames+'</td>'+
-      '<td>'+e.won+'</td>'+
-      '<td>'+e.draw+'</td>'+
-      '<td>'+e.lost+'</td>'+
-      '<td>'+e.goalsFor+'</td>'+
-      '<td>'+e.goalsAgainst+'</td>'+
-      '<td class="rgd '+gdClass+'">'+gd+'</td>'+
-      '<td><div class="form">'+form+'</div></td>'+
-      '<td class="rpts">'+e.points+'</td>'+
-    '</tr>';
+    return '<tr>' +
+      '<td><span class="rpos ' + pc + '">' + pos + '</span></td>' +
+      '<td><div class="rteam">' + logo + '<span class="rname">' + name + '</span></div></td>' +
+      '<td>' + e.playedGames + '</td>' +
+      '<td>' + e.won + '</td>' +
+      '<td>' + e.draw + '</td>' +
+      '<td>' + e.lost + '</td>' +
+      '<td>' + e.goalsFor + '</td>' +
+      '<td>' + e.goalsAgainst + '</td>' +
+      '<td class="rgd ' + gdClass + '">' + gd + '</td>' +
+      '<td><div class="form">' + form + '</div></td>' +
+      '<td class="rpts">' + e.points + '</td>' +
+      '</tr>';
   }).join('');
 
-  wrap.innerHTML=
-    '<div style="overflow-x:auto;">'+
-    '<table class="rtbl">'+
-    '<thead><tr>'+
-      '<th>#</th><th>Equipo</th><th title="Partidos jugados">PJ</th>'+
-      '<th title="Ganados">G</th><th title="Empatados">E</th><th title="Perdidos">P</th>'+
-      '<th title="Goles a favor">GF</th><th title="Goles en contra">GC</th>'+
-      '<th title="Diferencia de goles">DG</th><th>Forma</th><th title="Puntos">Pts</th>'+
-    '</tr></thead>'+
-    '<tbody>'+rows+'</tbody>'+
-    '</table></div>'+
-    '<div class="tbl-legend">'+
-      '<span><span style="color:var(--grn);font-weight:700;">■</span> Champions</span>'+
-      '<span><span style="color:var(--blu);font-weight:700;">■</span> Europa / Conference</span>'+
-      '<span><span style="color:var(--red);font-weight:700;">■</span> Descenso</span>'+
-      '<span style="margin-left:auto;opacity:.6;">football-data.org</span>'+
+  wrap.innerHTML =
+    '<div style="overflow-x:auto;">' +
+    '<table class="rtbl">' +
+    '<thead><tr>' +
+      '<th>#</th><th>Equipo</th><th title="Partidos jugados">PJ</th>' +
+      '<th title="Ganados">G</th><th title="Empatados">E</th><th title="Perdidos">P</th>' +
+      '<th title="Goles a favor">GF</th><th title="Goles en contra">GC</th>' +
+      '<th title="Diferencia de goles">DG</th><th>Forma</th><th title="Puntos">Pts</th>' +
+    '</tr></thead>' +
+    '<tbody>' + rows + '</tbody>' +
+    '</table></div>' +
+    '<div class="tbl-legend">' +
+      '<span><span style="color:var(--grn);font-weight:700;">■</span> Champions</span>' +
+      '<span><span style="color:var(--blu);font-weight:700;">■</span> Europa / Conference</span>' +
+      '<span><span style="color:var(--red);font-weight:700;">■</span> Descenso</span>' +
+      '<span style="margin-left:auto;opacity:.6;">football-data.org</span>' +
     '</div>';
 }
 
-function loadTable(key){
-  if(tblLoaded[key])return;
-  tblLoaded[key]=true;
-  var wrap=document.getElementById('tbl-'+key);
-  if(!wrap)return;
-  wrap.innerHTML='<div class="tbl-loading"><div class="tbl-spin"></div>Cargando tabla...</div>';
-  var cfg=leagues[key];
-  /* En Netlify usa el proxy function; en local (file://) llama directo */
-  var isLocal=location.protocol==='file:';
-  var url=isLocal
-  ?'https://api.football-data.org/v4/competitions/'+cfg.id+'/standings'
-  :'/api/standings?league='+key;
-  var headers=isLocal?{'X-Auth-Token':FD_KEY}:{};
-  fetch(url,{headers:headers})
-  .then(function(r){
-    if(!r.ok)throw new Error('HTTP '+r.status);
-    return r.json();
-  })
-  .then(function(data){
-    var total=data.standings&&data.standings.find(function(s){return s.type==='TOTAL';});
-    if(!total||!total.table)throw new Error('Sin datos');
-    renderTable(key,total.table);
-  })
-  .catch(function(err){
-    wrap.innerHTML='<div class="tbl-err">'+
-      '⚠️ No se pudo cargar la tabla en este momento.<br>'+
-      '<span style="font-size:11px;opacity:.7;">'+err.message+'</span>'+
-    '</div>';
-  });
-}
-  /* ... después de la función loadTable(key) ... */
-
-// NUEVA FUNCIÓN PARA GOLEADORES REALES
-function loadScorers(leagueKey) {
-  const container = document.querySelector('.rnav .wgt [role="list"]');
-  if(!container) return;
-
-  container.innerHTML = '<div class="tbl-loading"><div class="tbl-spin"></div></div>';
-
-  fetch(`/api/scorers?league=${leagueKey}`)
-    .then(r => r.json())
-    .then(data => {
-      if (!data.scorers) throw new Error('No hay datos');
-      
-      container.innerHTML = data.scorers.slice(0, 5).map((s, i) => `
-        <div class="scrow" role="listitem">
-          <span class="scpos">${i+1}</span>
-          <div class="scinf">
-            <div class="scname">${s.player.name}</div>
-            <div class="scteam">${s.team.name}</div>
-          </div>
-          <span class="scg">${s.goals}</span>
-        </div>
-      `).join('');
+function loadTable(key) {
+  if (tblLoaded[key]) return;
+  tblLoaded[key] = true;
+  var wrap = document.getElementById('tbl-' + key);
+  if (!wrap) return;
+  wrap.innerHTML = '<div class="tbl-loading"><div class="tbl-spin"></div>Cargando tabla...</div>';
+  var cfg = leagues[key];
+  var isLocal = location.protocol === 'file:';
+  var url = isLocal
+    ? 'https://api.football-data.org/v4/competitions/' + cfg.id + '/standings'
+    : '/api/standings?league=' + key;
+  var headers = isLocal ? { 'X-Auth-Token': FD_KEY } : {};
+  fetch(url, { headers: headers })
+    .then(function(r) {
+      if (!r.ok) throw new Error('HTTP ' + r.status);
+      return r.json();
     })
-    .catch(err => {
-      container.innerHTML = '<div class="tbl-err">Error al cargar goleadores</div>';
+    .then(function(data) {
+      var total = data.standings && data.standings.find(function(s) { return s.type === 'TOTAL'; });
+      if (!total || !total.table) throw new Error('Sin datos');
+      renderTable(key, total.table);
+    })
+    .catch(function(err) {
+      wrap.innerHTML = '<div class="tbl-err">⚠️ No se pudo cargar la tabla en este momento.<br><span style="font-size:11px;opacity:.7;">' + err.message + '</span></div>';
     });
 }
 
-// ACTUALIZAR FUNCIÓN swTab PARA QUE TAMBIÉN CARGUE GOLEADORES
-function swTab(pfx,id){
-  var allB=document.querySelectorAll('[id^="'+pfx+'t-"]');
-  var allP=document.querySelectorAll('[id^="'+pfx+'p-"]');
-  allB.forEach(function(b){b.classList.remove('on');b.setAttribute('aria-selected','false');b.tabIndex=-1;});
-  allP.forEach(function(p){p.classList.remove('on');});
-  
-  var btn=document.getElementById(pfx+'t-'+id);
-  var pan=document.getElementById(pfx+'p-'+id);
-  
-  if(btn){btn.classList.add('on');btn.setAttribute('aria-selected','true');btn.tabIndex=0;}
-  if(pan)pan.classList.add('on');
+/* ══════════════════════════════
+   NAVEGACIÓN PRINCIPAL
+   CORRECCIÓN: swTab definida UNA SOLA VEZ con toda la lógica unificada
+══════════════════════════════ */
+var pages = ['inicio', 'noticias', 'partidos', 'tabla', 'equipos', 'jugadores', 'historia', 'comunidad'];
 
-  /* Modificación: Si cambias de liga en la tabla, también actualiza los goleadores del sidebar */
-  if(pfx==='t' && leagues[id]) {
-    loadTable(id);
-    loadScorers(id); // Llamada a la nueva función
-  }
+function goTo(id) {
+  // Ocultar todas las páginas
+  pages.forEach(function(p) {
+    var el = document.getElementById('page-' + p);
+    if (el) el.classList.remove('on');
+    // Nav izquierdo desktop
+    var n = document.getElementById('nav-' + p);
+    if (n) { n.classList.remove('on'); n.removeAttribute('aria-current'); }
+    // Nav drawer móvil
+    var dn = document.getElementById('dnav-' + p);
+    if (dn) { dn.classList.remove('on'); dn.removeAttribute('aria-current'); }
+    // Bottom nav móvil
+    var bn = document.getElementById('bnav-' + p);
+    if (bn) bn.classList.remove('on');
+  });
+
+  // Mostrar página seleccionada
+  var pg = document.getElementById('page-' + id);
+  if (pg) pg.classList.add('on');
+
+  // Marcar activo en nav izquierdo
+  var nv = document.getElementById('nav-' + id);
+  if (nv) { nv.classList.add('on'); nv.setAttribute('aria-current', 'page'); }
+
+  // Marcar activo en drawer
+  var dnv = document.getElementById('dnav-' + id);
+  if (dnv) { dnv.classList.add('on'); dnv.setAttribute('aria-current', 'page'); }
+
+  // Marcar activo en bottom nav
+  var bnv = document.getElementById('bnav-' + id);
+  if (bnv) bnv.classList.add('on');
+
+  // Cargar tabla si se va a esa sección
+  if (id === 'tabla') loadTable('ll');
+
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
+function swTab(pfx, id) {
+  // Desactivar todos los botones y paneles del mismo prefijo
+  var allB = document.querySelectorAll('[id^="' + pfx + 't-"]');
+  var allP = document.querySelectorAll('[id^="' + pfx + 'p-"]');
+  allB.forEach(function(b) { b.classList.remove('on'); b.setAttribute('aria-selected', 'false'); b.tabIndex = -1; });
+  allP.forEach(function(p) { p.classList.remove('on'); });
 
+  // Activar el seleccionado
+  var btn = document.getElementById(pfx + 't-' + id);
+  var pan = document.getElementById(pfx + 'p-' + id);
+  if (btn) { btn.classList.add('on'); btn.setAttribute('aria-selected', 'true'); btn.tabIndex = 0; }
+  if (pan) pan.classList.add('on');
 
-/* Cargar LaLiga al inicio */
-window.addEventListener('DOMContentLoaded',function(){loadTable('ll');});
-var pages=['inicio','noticias','partidos','tabla','equipos','jugadores','historia','comunidad'];
-function goTo(id){
-  pages.forEach(function(p){var el=document.getElementById('page-'+p);if(el)el.classList.remove('on');var n=document.getElementById('nav-'+p);if(n){n.classList.remove('on');n.removeAttribute('aria-current');}});
-  var pg=document.getElementById('page-'+id);if(pg)pg.classList.add('on');
-  var nv=document.getElementById('nav-'+id);if(nv){nv.classList.add('on');nv.setAttribute('aria-current','page');}
-  window.scrollTo({top:0,behavior:'smooth'});
+  // Cargar tabla si aplica
+  if (pfx === 't' && leagues[id]) loadTable(id);
 }
-function swTab(pfx,id){
-  var allB=document.querySelectorAll('[id^="'+pfx+'t-"]');
-  var allP=document.querySelectorAll('[id^="'+pfx+'p-"]');
-  allB.forEach(function(b){b.classList.remove('on');b.setAttribute('aria-selected','false');b.tabIndex=-1;});
-  allP.forEach(function(p){p.classList.remove('on');});
-  var btn=document.getElementById(pfx+'t-'+id);
-  var pan=document.getElementById(pfx+'p-'+id);
-  if(btn){btn.classList.add('on');btn.setAttribute('aria-selected','true');btn.tabIndex=0;}
-  if(pan)pan.classList.add('on');
-  /* Cargar tabla si es pestaña de standings */
-  if(pfx==='t' && leagues[id]) loadTable(id);
+
+/* ══════════════════════════════
+   DRAWER MÓVIL
+══════════════════════════════ */
+function openDrawer() {
+  var overlay = document.getElementById('nav-overlay');
+  overlay.classList.add('open');
+  document.body.style.overflow = 'hidden';
+  var btn = document.getElementById('hamburger-btn');
+  if (btn) btn.setAttribute('aria-expanded', 'true');
+  // Focus al primer item del drawer
+  setTimeout(function() {
+    var first = overlay.querySelector('.ni');
+    if (first) first.focus();
+  }, 250);
 }
-function toast(msg){var t=document.getElementById('toast');t.textContent='✓ '+msg;t.classList.add('show');setTimeout(function(){t.classList.remove('show');},3000);}
-function handleSearch(v){if(v.length>2)toast('Buscando: "'+v+'"...');}
-function submitComment(){
-  var name=document.getElementById('cf-name').value.trim();
-  var team=document.getElementById('cf-team').value;
-  var text=document.getElementById('cf-text').value.trim();
-  if(!name){alert('Por favor ingresa tu nombre.');document.getElementById('cf-name').focus();return;}
-  if(!text){alert('Por favor escribe un comentario.');document.getElementById('cf-text').focus();return;}
-  var label=name+(team?' · '+team:'');
-  var div=document.createElement('div');div.className='citem';div.style.borderLeft='3px solid var(--grn)';
-  div.innerHTML='<div class="cih"><span class="cin">'+label+'</span><span class="cid">ahora mismo</span></div><p class="cit">'+text.replace(/</g,'&lt;').replace(/>/g,'&gt;')+'</p>';
-  var list=document.getElementById('clist');list.insertBefore(div,list.firstChild);
-  document.getElementById('cf-name').value='';document.getElementById('cf-team').value='';document.getElementById('cf-text').value='';
+
+function closeDrawer() {
+  var overlay = document.getElementById('nav-overlay');
+  overlay.classList.remove('open');
+  document.body.style.overflow = '';
+  var btn = document.getElementById('hamburger-btn');
+  if (btn) { btn.setAttribute('aria-expanded', 'false'); btn.focus(); }
+}
+
+// Cerrar drawer con Escape
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closeDrawer();
+});
+
+/* ══════════════════════════════
+   UTILIDADES
+══════════════════════════════ */
+function toast(msg) {
+  var t = document.getElementById('toast');
+  t.textContent = '✓ ' + msg;
+  t.classList.add('show');
+  setTimeout(function() { t.classList.remove('show'); }, 3000);
+}
+
+function handleSearch(v) {
+  if (v.length > 2) toast('Buscando: "' + v + '"...');
+}
+
+function submitComment() {
+  var name = document.getElementById('cf-name').value.trim();
+  var team = document.getElementById('cf-team').value;
+  var text = document.getElementById('cf-text').value.trim();
+  if (!name) { alert('Por favor ingresa tu nombre.'); document.getElementById('cf-name').focus(); return; }
+  if (!text) { alert('Por favor escribe un comentario.'); document.getElementById('cf-text').focus(); return; }
+  var label = name + (team ? ' · ' + team : '');
+  var div = document.createElement('div');
+  div.className = 'citem';
+  div.style.borderLeft = '3px solid var(--grn)';
+  div.innerHTML = '<div class="cih"><span class="cin">' + label + '</span><span class="cid">ahora mismo</span></div><p class="cit">' + text.replace(/</g, '&lt;').replace(/>/g, '&gt;') + '</p>';
+  var list = document.getElementById('clist');
+  list.insertBefore(div, list.firstChild);
+  document.getElementById('cf-name').value = '';
+  document.getElementById('cf-team').value = '';
+  document.getElementById('cf-text').value = '';
   toast('¡Comentario publicado!');
 }
-document.querySelectorAll('.mr,.fmatch,.ni').forEach(function(el){
-  el.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();el.click();}});
+
+// Teclado: Enter / Space activa elementos interactivos
+document.querySelectorAll('.mr, .fmatch, .ni').forEach(function(el) {
+  el.addEventListener('keydown', function(e) {
+    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); el.click(); }
+  });
 });
-  // Motor para inyectar la fecha actual en el span
+
+// Fecha actual en el encabezado
 function mostrarFechaReal() {
-  const spanFecha = document.getElementById('current-date');
-  if (spanFecha) {
-    const opciones = { day: 'numeric', month: 'short', year: 'numeric' };
-    const fechaHoy = new Date().toLocaleDateString('es-ES', opciones);
-    spanFecha.textContent = fechaHoy;
+  var span = document.getElementById('current-date');
+  if (span) {
+    var opciones = { day: 'numeric', month: 'short', year: 'numeric' };
+    span.textContent = new Date().toLocaleDateString('es-ES', opciones);
   }
 }
 
-// Se ejecuta apenas carga la página
-window.addEventListener('DOMContentLoaded', mostrarFechaReal);
+// Inicialización al cargar
+window.addEventListener('DOMContentLoaded', function() {
+  mostrarFechaReal();
+  loadTable('ll'); // Precargar LaLiga
+});
 </script>
 </body>
 </html>
